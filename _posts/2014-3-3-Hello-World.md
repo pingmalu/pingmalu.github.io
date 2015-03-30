@@ -1,7 +1,21 @@
 ---
 layout: post
-title: You're up and running!
+title: 欢迎来到git.malu.me
 ---
+
+### 代码块
+``` python
+@requires_authorization
+def somefunc(param1='', param2=0):
+    '''A docstring'''
+    if param1 > param2: # interesting
+        print 'Greater'
+    return (param2 - param1 + 1) or None
+class SomeClass:
+    pass
+>>> message = '''interpreter
+... prompt'''
+```
 
 Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
 
