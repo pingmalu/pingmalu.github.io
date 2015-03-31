@@ -8,7 +8,7 @@ permalink: /about/
 
 ### 更多信息
 
-(http://malu.me)[http://malu.me].
+[http://malu.me](http://malu.me).
 
 ### Contact me
 
