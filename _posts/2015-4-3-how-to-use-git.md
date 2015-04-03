@@ -15,7 +15,9 @@ git是一个版本控制系统。官方的解释是：版本控制(Revision con
 
 1) svk配合svn可以实现分布式的版本控制。 
 
-2) 我是从SVN转到Git下的。我想Git的优势是速度飞快，谁用谁知道！ 3) git的确是最快的，bzr慢的要死 
+2) 我是从SVN转到Git下的。我想Git的优势是速度飞快，谁用谁知道！ 
+
+3) git的确是最快的，bzr慢的要死 
 
 4) SVN 在 windows 下有 TortoiseSVN 
 
