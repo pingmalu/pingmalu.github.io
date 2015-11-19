@@ -1,3 +1,7 @@
+---
+layout: post
+title: GO安装过程
+---
 官方下载地址：[https://golang.org/dl/](https://golang.org/dl/)
 
 源码安装方法：
