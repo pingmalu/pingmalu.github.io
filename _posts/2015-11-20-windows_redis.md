@@ -3,7 +3,7 @@ layout: post
 title: window下安装redis以及安装PHP-redis插件
 ---
 
-## PHP redis扩展下载： ##
+### PHP redis扩展下载： ###
 [http://windows.php.net/downloads/pecl/snaps/redis/2.2.5/](http://windows.php.net/downloads/pecl/snaps/redis/2.2.5/)
 
 [http://windows.php.net/downloads/pecl/releases/redis/2.2.7/](http://windows.php.net/downloads/pecl/releases/redis/2.2.7/)
@@ -11,7 +11,7 @@ title: window下安装redis以及安装PHP-redis插件
 下载好后，只要把dll文件放入F:\wamp\bin\php\php5.5.12\ext 目录，然后在wamp中点击php插件redis即可
 
 
-## PHP igbinary扩展下载： ##
+### PHP igbinary扩展下载： ###
 http://pecl.php.net/package/igbinary/1.2.1/windows
 
 php.ini添加
@@ -21,7 +21,7 @@ php.ini添加
 > extension=php_redis.dll
 
 
-## windows版redis安装 ##
+### windows版redis安装 ###
 https://github.com/MSOpenTech/redis/releases
 
 安装windows版本教程：
