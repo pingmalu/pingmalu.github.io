@@ -12,28 +12,28 @@ title: window下安装redis以及安装PHP-redis插件
 
 
 ### PHP igbinary扩展下载： ###
-http://pecl.php.net/package/igbinary/1.2.1/windows
+[http://pecl.php.net/package/igbinary/1.2.1/windows](http://pecl.php.net/package/igbinary/1.2.1/windows)
 
 php.ini添加
 
-> extension=php_igbinary.dll
-> 
-> extension=php_redis.dll
+    extension=php_igbinary.dll
+    
+    extension=php_redis.dll
 
 
 ### windows版redis安装 ###
-https://github.com/MSOpenTech/redis/releases
+[https://github.com/MSOpenTech/redis/releases](https://github.com/MSOpenTech/redis/releases)
 
 安装windows版本教程：
 [http://jingyan.baidu.com/article/f25ef2546119fd482c1b8214.html](http://jingyan.baidu.com/article/f25ef2546119fd482c1b8214.html)
 
 
 出现错误，添加redis.windows.conf
-> maxheap 1024000000
+    maxheap 1024000000
 
 运行
 
-> redia-server.exe redis.windows.conf
+    redia-server.exe redis.windows.conf
 
 Redis在线文档
 
