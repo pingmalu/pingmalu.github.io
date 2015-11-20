@@ -7,8 +7,7 @@ layout: default
     {{ content }}
   </div>
   <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
+    {{ page.date | date: "%Y-%m-%d" }}
   </div>
-
   {% include disqus.html %}
 </article>
