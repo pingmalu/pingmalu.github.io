@@ -18,9 +18,9 @@ html {
 }
 
 body {
+  background: $white;
   font: 18px/1.4 $helvetica;
-  color: $Gray;
-  background: #fafafa;
+  color: $darkGray;
 }
 
 .container {
@@ -32,7 +32,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
-  color: #424242;
+  color: $darkerGray;
   font-weight: bold;
 
   line-height: 1.7;
@@ -45,13 +45,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 30px;
   a {
     color: inherit;
   }
 }
 
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
 h4 {
+  font-size: 18px;
   color: $gray;
 }
 
@@ -107,8 +116,8 @@ img {
 }
 
 .date {
+  font-style: italic;
   color: $gray;
-  font-size: 12px;
 }
 
 // Specify the color of the selection
@@ -143,12 +152,11 @@ img {
 
 .wrapper-masthead {
   margin-bottom: 50px;
-  background: #2e7bcf url(/images/header-bg.jpg) 0 0 repeat-x;
-  border-bottom: solid 1px #275da1;
 }
 
 .masthead {
-  padding: 83px 0;
+  padding: 20px 0;
+  border-bottom: 1px solid $lightGray;
 
   @include mobile {
     text-align: center;
@@ -168,7 +176,7 @@ img {
   }
 
   img {
-    border-radius: 50%;
+    border-radius: 5px;
   }
 }
 
@@ -184,23 +192,17 @@ img {
 
 .site-name {
   margin: 0;
-  color: #F1FCFF;
+  color: $darkGray;
   cursor: pointer;
   font-family: $helveticaNeue;
   font-weight: 300;
   font-size: 28px;
   letter-spacing: 1px;
-  text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.4);
-  
-  a:hover {
-    color: #FFFFFF;
-    text-shadow: 0px 0px 1px rgb(255, 255, 255);
-  }
 }
 
 .site-description {
   margin: -5px 0 0 0;
-  color: #91D4F6;
+  color: $gray;
   font-size: 16px;
 
   @include mobile {
@@ -223,7 +225,7 @@ nav {
 
   a {
     margin-left: 20px;
-    color: #DEF4FF;
+    color: $darkGray;
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
@@ -232,10 +234,6 @@ nav {
       margin: 0 10px;
       color: $blue;
     }
-  }
-  a:hover{
-    color: #FFFFFF;
-    text-shadow: 0px 0px 1px rgb(255, 255, 255);
   }
 }
 
@@ -273,6 +271,8 @@ nav {
 
 .wrapper-footer {
   margin-top: 50px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   background-color: $lightGray;
 }
 
