@@ -28,7 +28,8 @@ php.ini添加
 [http://jingyan.baidu.com/article/f25ef2546119fd482c1b8214.html](http://jingyan.baidu.com/article/f25ef2546119fd482c1b8214.html)
 
 
-出现错误，添加redis.windows.conf
+出现错误，向redis.windows.conf添加
+
     maxheap 1024000000
 
 运行
