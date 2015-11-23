@@ -44,4 +44,4 @@ Redis在线文档
 
 [http://www.runoob.com/redis/](http://www.runoob.com/redis/)
 
-[http://redisbook.readthedocs.org/en/latest/index.html](http://redisbook.readthedocs.org/en/latest/index.html)
+[Redis 设计与实现（第一版）](http://redisbook.readthedocs.org/en/latest/index.html)
