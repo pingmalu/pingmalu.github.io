@@ -43,3 +43,5 @@ Redis在线文档
 [http://doc.redisfans.com/](http://doc.redisfans.com/)
 
 [http://www.runoob.com/redis/](http://www.runoob.com/redis/)
+
+[http://redisbook.readthedocs.org/en/latest/index.html](http://redisbook.readthedocs.org/en/latest/index.html)
