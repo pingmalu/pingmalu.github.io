@@ -275,6 +275,34 @@ nav a:hover {
   }
 }
 
+.pagination {
+    margin: 10px 0px;
+}
+
+.pagination a{
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.5;
+    text-decoration: none;
+    color: #008E59;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+}
+
+.pagination span{
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.5;
+    text-decoration: none;
+    color: #fff;
+    background-color: #008E59;
+    border: 1px solid #008E59;
+    margin-left: -1px;
+    z-index: 2;
+}
+
 .wrapper-footer {
   margin-top: 50px;
   background-color: $lightGray;
