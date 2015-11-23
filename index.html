@@ -15,10 +15,10 @@ layout: default
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
     </article>
   {% endfor %}
-  {% if paginator.total_pages > 1 %}
 
+  {% if paginator.total_pages > 1 %}
 	{% if paginator.previous_page %}
-	    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"上一页</a>
+	    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">上一页</a>
 	{% endif %}
 
 	{% for page in (1..paginator.total_pages) %}
@@ -27,7 +27,7 @@ layout: default
     	{% elsif page == 1 %}
     	  <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
     	{% else %}
-    	  <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+    	  <a href="/page{{ page }}">{{ page }}</a>
     	{% endif %}
 	{% endfor %}
 
