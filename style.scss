@@ -226,7 +226,7 @@ nav {
 
   a {
     margin-left: 20px;
-    color: #DEF4FF;
+    color: #E0F8FF;
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
@@ -248,7 +248,7 @@ nav a:hover {
 //
 
 .posts > .post {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
   border-bottom: 1px solid $lightGray;
 }
 
@@ -276,20 +276,27 @@ nav a:hover {
 }
 
 .pagination {
-    margin: 10px 0px;
+    margin: 50px 0px 0px 0px;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
 }
-
 .pagination a{
     position: relative;
     float: left;
     padding: 6px 12px;
     line-height: 1.5;
     text-decoration: none;
-    color: #008E59;
+    color: #268bd2;
     border: 1px solid #ddd;
     margin-left: -1px;
 }
-
+.pagination a:hover {
+    background-color: #F5F5F5;
+}
+.pag {
+    display: inline-block;
+}
 .pagination span{
     position: relative;
     float: left;
@@ -297,8 +304,8 @@ nav a:hover {
     line-height: 1.5;
     text-decoration: none;
     color: #fff;
-    background-color: #008E59;
-    border: 1px solid #008E59;
+    background-color: #268bd2;
+    border: 1px solid #268bd2;
     margin-left: -1px;
     z-index: 2;
 }

@@ -72,5 +72,5 @@ exclude:
     - Gemfile.lock
     - LICENSE
     - README.md
-paginate: 5
+paginate: 10
 paginate_path: "page:num"
