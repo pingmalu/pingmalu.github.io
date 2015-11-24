@@ -144,7 +144,7 @@ img {
 .wrapper-masthead {
   margin-bottom: 50px;
   background: #2e7bcf url(/images/header-bg.jpg) 0 0 repeat-x;
-  border-bottom: solid 1px #275da1;
+  border-bottom: solid 1px #2D6DBD;
 }
 
 .masthead {
@@ -309,10 +309,22 @@ nav a:hover {
     margin-left: -1px;
     z-index: 2;
 }
-
+.pagination span.disabled {
+    background-color: #fafafa;
+    cursor: default;
+    color: #d3d3d3;
+    border: 1px solid #DDDDDD;
+}
+.pagination span.prev_wan {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.pagination span.next_wan {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
 .wrapper-footer {
   margin-top: 50px;
-  background-color: $lightGray;
 }
 
 footer {
