@@ -1,5 +1,5 @@
 ---
-typeof: post
+layout: post
 title: Beautiful Soup4安装过程
 ---
 
