@@ -19,7 +19,7 @@ html {
 
 body {
   background: #fafafa;
-  font: 18px/1.4 $helvetica;
+  font: 14px/1.4 $helvetica;
   color: $gray;
 }
 
@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 22px;
   a {
     color: inherit;
   }
@@ -248,7 +248,6 @@ nav a:hover {
 //
 
 .posts > .post {
-  padding-bottom: 1em;
   border-bottom: 1px solid $lightGray;
 }
 
@@ -269,10 +268,6 @@ nav a:hover {
     margin-top: 10px;
   }
 
-  .read-more {
-    text-transform: uppercase;
-    font-size: 15px;
-  }
 }
 
 .pagination {
@@ -304,8 +299,8 @@ nav a:hover {
     line-height: 1.5;
     text-decoration: none;
     color: #fff;
-    background-color: #268bd2;
-    border: 1px solid #268bd2;
+    background-color: #70BAEF;
+    border: 1px solid #439DDC;
     margin-left: -1px;
     z-index: 2;
 }
