@@ -160,8 +160,8 @@ img {
   width: 70px;
   height: 70px;
   margin-right: 15px;
-  -webkit-animation: animation 1000ms linear infinite both;
-  animation: animation 1000ms linear infinite both;
+  -webkit-animation: xiaoma 1000ms linear infinite both;
+  animation: xiaoma 1000ms linear infinite both;
 
   @include mobile {
     float: none;
