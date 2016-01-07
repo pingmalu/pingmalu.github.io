@@ -17,3 +17,8 @@ title: Beautiful Soup4安装过程
     python setup.py install
     
 注：Beautiful Soup 3 目前已经停止开发，推荐在现在的项目中使用Beautiful Soup 4，不过它已经被移植到BS4了，也就是说导入时我们需要 import bs4 。
+
+
+###用pip安装
+
+	pip install beautifulsoup4
