@@ -40,3 +40,19 @@ FeatureNotFound: Couldn't find a tree builder with the features you requested: h
 bs4.FeatureNotFound: Couldn't find a tree builder with the features you requested: lxml. Do you need to install a parser library?
 
 	pip install lxml
+
+error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
+
+
+安装lxml环境;更新编译环境,tee建立日志
+
+	apt-get install python-lxml
+	apt-get build-dep python-lxml | tee python-lxml-build.log
+
+更新
+
+	pip install lxml --upgrade
+
+安装python模块时出现：error: Setup script exited with error: command 'gcc' failed with exit status 1
+
+	apt-get install python-dev
