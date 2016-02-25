@@ -56,3 +56,6 @@ error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
 安装python模块时出现：error: Setup script exited with error: command 'gcc' failed with exit status 1
 
 	apt-get install python-dev
+
+
+说明文档：[http://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/](http://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/)
