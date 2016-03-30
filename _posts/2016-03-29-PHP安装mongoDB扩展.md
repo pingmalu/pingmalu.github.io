@@ -44,3 +44,39 @@ title: PHP安装mongoDB扩展
    }
 ?>
 {% endhighlight %}
+
+#### PHP mongoDB常用查询
+
+{% highlight php %}
+<?php
+//字段字串为
+$querys = array（"name"=>"malu"）；
+//数值等于多少
+$querys = array（"number"=>7）；
+//数值大于多少
+$querys = array（"number"=>array（'$gt' => 5））；
+//数值大于等于多少
+$querys = array（"number"=>array（'$gte' => 2））；
+//数值小于多少
+$querys = array（"number"=>array（'$lt' => 5））；
+//数值小于等于多少
+$querys = array（"number"=>array（'$lte' => 2））；
+//数值介于多少
+$querys = array（"number"=>array（'$gt' => 1，'$lt' => 9））；
+//数值不等于某值
+$querys = array（"number"=>array（'$ne' => 9））；
+//使用js下查询条件
+$js ="function（）{
+return this.number == 2 && this.name == 'shian'；
+}";
+$querys = array（'$where'=>$js）；
+//字段等于哪些值
+$querys = array（"number"=>array（'$in' => array（1,2,9）））；
+//字段不等于哪些值
+$querys = array（"number"=>array（'$nin' => array（1,2,9）））；
+//使用正则查询
+$querys = array（"name"=>  new MongoRegex("/.*".$name.".*/i")）；
+//或
+$querys = array（'$or' => array（array（'number'=>2），array（'number'=>9）））；
+?>
+{% endhighlight %}
