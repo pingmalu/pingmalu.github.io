@@ -7,6 +7,17 @@ title: PHP安装mongoDB扩展
 
 	pecl install mongo
 
+### 源码安装
+
+去这个网站下载最新版本 [http://pecl.php.net/package/mongo](http://pecl.php.net/package/mongo)
+
+	wget http://pecl.php.net/get/mongo-1.6.13.tgz -P /root/
+    tar -zxvf /root/mongo-1.6.13.tgz -C /root/
+    cd /root/mongo-1.6.13/
+    phpize
+    ./configure
+    make install
+
 ### pecl安装
 
     wget http://pear.php.net/go-pear.phar
