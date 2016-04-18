@@ -3,9 +3,10 @@ layout: post
 title: python_gevent模块安装
 ---
 
-### 通过pip安装，先确保python-dev已安装：
+### 通过pip安装，先确保python-dev和libevent-dev已安装：
 
 	apt-get install python-dev
+	apt-get install libevent-dev 
 	pip install gevent
 
 正常情况greenlet也会一同安装：
