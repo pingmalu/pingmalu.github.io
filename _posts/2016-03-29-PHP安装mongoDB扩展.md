@@ -43,6 +43,8 @@ title: PHP安装mongoDB扩展
    $m = new MongoClient("xxx.malu.me:123456");
    // 选择一个数据库
    $db = $m->mydb;
+   //认证登录
+   $db->authenticate('username', 'passwd');
    // 选择一个表
    $collection = $db->user;
    $name = 'python';
