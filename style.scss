@@ -22,6 +22,9 @@ body {
   font: 14px/1.4 $helvetica;
   color: $gray;
 }
+#malukepfoot {
+    z-index: 3;
+}
 
 .container {
   margin: 0 auto;
