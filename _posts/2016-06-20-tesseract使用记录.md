@@ -40,3 +40,5 @@ title: tesseract使用记录
 	  -v --version: version info  //查看版本
 	  --list-langs: list available languages for tesseract engine. Can be used with --tessdata-dir. //显示存在的语言包
 	  --print-parameters: print tesseract parameters to the stdout. //打印参数
+
+
