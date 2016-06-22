@@ -41,4 +41,27 @@ title: tesseract使用记录
 	  --list-langs: list available languages for tesseract engine. Can be used with --tessdata-dir. //显示存在的语言包
 	  --print-parameters: print tesseract parameters to the stdout. //打印参数
 
+### 使用示例
+
+	# tesseract c.png out -l chi_sim
+	Tesseract Open Source OCR Engine v3.03 with Leptonica
+	# cat out.txt
+    1加9等于几
+
+设置字符白名单(只有数字和大小字母)：
+
+	# tesseract c.png out -c tessedit_char_whitelist='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
+设置字符黑名单(不含数字)：
+
+	# tesseract c.png out -c tessedit_char_blacklist='0123456789'
+
+设置配置文件：
+
+	# vim /usr/share/tesseract-ocr/tessdata/configs/digits
+	改成
+	tessedit_char_whitelist ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+	# tesseract c.png out -psm 10 digits
+
+
 
