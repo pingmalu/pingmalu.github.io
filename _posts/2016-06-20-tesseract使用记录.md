@@ -48,13 +48,15 @@ title: tesseract使用记录
 	# cat out.txt
     1加9等于几
 
-设置字符白名单(只有数字和大小字母)：
+设置字符白名单(只有大小写字母)：
 
-	# tesseract c.png out -c tessedit_char_whitelist='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+	# tesseract c.png out -psm 7 -c tessedit_char_whitelist='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 
 设置字符黑名单(不含数字)：
 
-	# tesseract c.png out -c tessedit_char_blacklist='0123456789'
+	# tesseract c.png out -psm 7 -c tessedit_char_blacklist='0123456789'
+
+-psm 7 表示告诉tesseract c.png图片是一行文本,这个参数可以减少识别错误率(默认为 3)
 
 设置配置文件：
 
