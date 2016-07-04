@@ -66,4 +66,154 @@ title: tesseract使用记录
 	# tesseract c.png out -psm 10 digits
 
 
+### 训练字符集
 
+tesseract默认的识别率并不是很高，但是他强大之处在于可训练。
+
+通过训练，识别率能提高不少。
+
+下面是我写的自动处理脚本（运行在windows环境）：
+
+1.自动生成box文件.bat
+
+{% highlight bat %}
+
+for /f %%i in ('dir /b /o:d *.tif') do (
+        echo %%i
+        set filen=%%~nxi
+    )
+
+if exist %filen% goto aaa
+    echo tif file not found
+    pause
+    exit
+:aaa
+
+for /f "tokens=1,2,3,4 delims=. " %%a in ('echo %filen%') do (
+    set fontname=%%b
+    set ifname=%%a
+    echo %%a
+    echo %%b
+    echo %%c
+    echo %%d
+    )
+
+set fname=%ifname%.%fontname%.exp0
+
+tesseract %fname%.tif %fname% batch.nochop makebox
+
+{% endhighlight %}
+
+1.2.接下来需要手动打开jTessBoxEditor.jar工具-打开tif文件，对识别结果进行修正。
+
+2.生成最终文件.bat
+
+{% highlight bat %}
+
+for /f %%i in ('dir /b /o:d *.tif') do (
+        echo %%i
+        set filen=%%~nxi
+    )
+
+if exist %filen% goto aaa
+    echo TIF file not found
+    pause
+    exit
+:aaa
+
+for /f "tokens=1,2,3,4 delims=. " %%a in ('echo %filen%') do (
+    set fontname=%%b
+    set ifname=%%a
+    echo %%a
+    echo %%b
+    echo %%c
+    echo %%d
+    )
+set fname=%ifname%.%fontname%.exp0
+
+if exist %fname%.box goto bbb
+    echo BOX file not found
+    pause
+    exit
+:bbb
+
+echo Run Tesseract for Training..  
+tesseract.exe %fname%.tif %fname% box.train  
+
+if exist font_properties goto exit
+   echo %fontname% 0 0 0 0 0 > font_properties
+:exit
+
+echo Compute the Character Set..  
+unicharset_extractor.exe %fname%.box  
+mftraining -F font_properties -U unicharset -O %ifname%.unicharset %fname%.tr  
+  
+echo Clustering..  
+cntraining.exe %fname%.tr  
+  
+echo Rename Files..  
+rename normproto %ifname%.normproto  
+rename inttemp %ifname%.inttemp  
+rename pffmtable %ifname%.pffmtable  
+rename shapetable %ifname%.shapetable   
+  
+echo Create Tessdata..  
+combine_tessdata.exe %ifname%. 
+@pause
+
+{% endhighlight %}
+
+这样在目录下会生成xx.traineddata字库文件，把它拿到tesseract目录：
+
+linux：/usr/share/tesseract-ocr/tessdata
+
+windows：jTessBoxEditor\tesseract-ocr\tessdata
+
+执行：
+
+	tesseract malu.jpg out -l xx
+
+就能识别了
+
+3.再附上一个自动清理目录.bat
+
+{% highlight bat %}
+
+for /f %%i in ('dir /b /o:d *.tif') do (
+        echo %%i
+        set filen=%%~nxi
+    )
+
+if exist %filen% goto aaa
+    echo TIF file not found
+    pause
+    exit
+:aaa
+
+for /f "tokens=1,2,3,4 delims=. " %%a in ('echo %filen%') do (
+    set fontname=%%b
+    set ifname=%%a
+    echo %%a
+    echo %%b
+    echo %%c
+    echo %%d
+    )
+set fname=%ifname%.%fontname%.exp0
+
+del font_properties
+del normproto
+del inttemp
+del pffmtable
+del shapetable
+del unicharset
+
+del %ifname%.normproto  
+del %ifname%.inttemp  
+del %ifname%.pffmtable  
+del %ifname%.shapetable
+del %ifname%.unicharset
+
+
+{% endhighlight %}
+
+会把转换过程中的临时文件进行清理
