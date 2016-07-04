@@ -104,6 +104,9 @@ tesseract %fname%.tif %fname% batch.nochop makebox
 
 {% endhighlight %}
 
+生成box文件里：后面的四个数字分别是这个字符的左、下、右、上四个边框的坐标值，坐标以图片左下角为坐标原点0，0
+
+
 1.2.接下来需要手动打开jTessBoxEditor.jar工具-打开tif文件，对识别结果进行修正。
 
 2.生成最终文件.bat
