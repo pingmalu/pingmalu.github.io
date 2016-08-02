@@ -220,3 +220,6 @@ del %ifname%.unicharset
 {% endhighlight %}
 
 会把转换过程中的临时文件进行清理
+
+
+参考博文: http://blog.csdn.net/yasi_xi/article/details/8763385
