@@ -66,11 +66,41 @@ title: tesseract使用记录
 	# tesseract c.png out -psm 10 digits
 
 
-### 训练字符集
+# 训练字符集
 
 tesseract默认的识别率并不是很高，但是他强大之处在于可训练。
 
 通过训练，识别率能提高不少。
+
+### 首先安装jTessBoxEditor
+
+去这里下载：https://sourceforge.net/projects/vietocr/files/jTessBoxEditor/
+
+下载后解压到一个目录，然后配置环境变量：
+
+	变量名：TESSDATA_PREFIX
+	变量值：D:\02_SOFT\jTessBoxEditor\tesseract-ocr\tessdata
+
+然后给系统变量添加：
+
+	变量名：Path
+	变量值：D:\02_SOFT\jTessBoxEditor\tesseract-ocr
+
+### 二值化备选图像
+
+去除图片背景杂色，二值化图像
+
+### 生成tif
+
+用jTessBoxEditor工具->Tools->Merge TIFF 把多张图像合并成tif文件
+
+tif命名规范：
+
+	[lang].[fontname].exp[num].tif
+
+其中lang为语言名称，fontname为字体名称，num为序号，可以随便定义。
+
+### 然后用脚本生成box文件
 
 下面是我写的自动处理脚本（运行在windows环境）：
 
@@ -107,7 +137,11 @@ tesseract %fname%.tif %fname% batch.nochop makebox
 生成box文件里：后面的四个数字分别是这个字符的左、下、右、上四个边框的坐标值，坐标以图片左下角为坐标原点0，0
 
 
+### 对自动识别结果进行修正
+
 1.2.接下来需要手动打开jTessBoxEditor.jar工具-打开tif文件，对识别结果进行修正。
+
+### 然后生成最终文件
 
 2.生成最终文件.bat
 
