@@ -257,3 +257,57 @@ del %ifname%.unicharset
 
 
 参考博文: http://blog.csdn.net/yasi_xi/article/details/8763385
+
+
+
+# 编译安装
+
+编译安装 tesseract 首先需要安装 leptonica，否则编译tesseract 的时候出现 "configure: error: leptonica not found"。
+
+leptonica下载地址：[http://www.leptonica.org/download.html](http://www.leptonica.org/download.html)
+
+安装过程
+
+	tar -zxvf leptonica-1.73.tar.gz
+	cd leptonica-1.73
+	./configure 
+	make
+	make install
+
+
+### 下载安装tesseract
+
+tesseract下载地址：[https://github.com/tesseract-ocr/tesseract/releases](https://github.com/tesseract-ocr/tesseract/releases)
+
+安装过程
+
+	wget https://github.com/tesseract-ocr/tesseract/archive/3.04.01.tar.gz
+	tar -zxvf 3.04.01.tar.gz 
+	cd tesseract-3.04.01/
+	./autogen.sh 
+	./configure
+	make -j4
+	make install
+
+下面可以查看版本了：
+
+	[ root@2dfc0631f40e:/usr/local/bin ]$ ./tesseract -v
+	tesseract 3.04.01
+	 leptonica-1.73
+	  zlib 1.2.8
+
+
+如果出现错误：
+
+	[ root@2dfc0631f40e:/usr/local/bin ]$ ./tesseract 
+	./tesseract: error while loading shared libraries: liblept.so.5: cannot open shared object file: No such file or directory
+
+那么需执行一下ldconfig命令
+
+> ldconfig命令的用途,
+> 
+> 主要是在默认搜寻目录(/lib和/usr/lib)以及动态库配置文件/etc/ld.so.conf内所列的目录下, 
+> 
+> 搜索出可共享的动态链接库(格式如lib*.so*), 进而创建出动态装入程序(ld.so)所需的连接和缓存文件. 
+> 
+> 缓存文件默认为/etc/ld.so.cache, 此文件保存已排好序的动态链接库名字列表. 
