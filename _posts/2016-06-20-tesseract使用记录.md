@@ -310,4 +310,31 @@ tesseract下载地址：[https://github.com/tesseract-ocr/tesseract/releases](ht
 > 
 > 搜索出可共享的动态链接库(格式如lib*.so*), 进而创建出动态装入程序(ld.so)所需的连接和缓存文件. 
 > 
-> 缓存文件默认为/etc/ld.so.cache, 此文件保存已排好序的动态链接库名字列表. 
+> 缓存文件默认为/etc/ld.so.cache, 此文件保存已排好序的动态链接库名字列表.
+> 
+
+
+### 安装语言数据包
+
+下载地址：[https://github.com/tesseract-ocr/tessdata](https://github.com/tesseract-ocr/tessdata)
+
+下载安装：
+
+	cd /usr/local/share/tessdata
+	wget https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata
+
+如果出现错误：
+
+	提示缺少liblept.so.4，没找到此共享库
+	Error in pixReadStreamPng: function not present
+	Error in pixReadStream: png: no pix returned
+	Error in pixGetInputFormat: pix not defined
+	Error in pixRead: image not returned
+	Error in fopenReadStream: file not found
+	Error in pixRead: image file not found
+
+安装必要的库，然后重新编译安装leptonica：
+
+	$ sudo apt-get install libjpeg-dev libpng-dev libtiff4-dev
+	$ cd leptonica-1.73
+	$ ./configure && make && sudo make install
