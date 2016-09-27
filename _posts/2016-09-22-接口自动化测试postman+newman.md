@@ -14,6 +14,10 @@ postman编写测试代码：
 TV4 json校验解析器：[https://github.com/geraintluff/tv4](https://github.com/geraintluff/tv4)
 
 
+newman源码地址：
+
+[https://github.com/postmanlabs/newman](https://github.com/postmanlabs/newman)
+
 newman快速安装过程:
 
 	npm install -g newman
