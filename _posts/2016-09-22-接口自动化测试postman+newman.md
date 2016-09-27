@@ -7,6 +7,13 @@ postman下载地址：
 
 [https://www.getpostman.com/apps](https://www.getpostman.com/apps)
 
+postman编写测试代码：
+
+参考官方说明文档：[https://www.getpostman.com/docs/testing_examples](https://www.getpostman.com/docs/testing_examples)
+
+TV4 json校验解析器：[https://github.com/geraintluff/tv4](https://github.com/geraintluff/tv4)
+
+
 newman快速安装过程:
 
 	npm install -g newman
