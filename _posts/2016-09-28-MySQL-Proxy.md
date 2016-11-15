@@ -16,14 +16,13 @@ title:  "MySQL-Proxy"
 	
 编辑配置文件：vim /usr/local/mysql-proxy/mysql-proxy.conf
 
-	[mysql-proxy]                                                                                                                                           
-	admin-address = localhost:4041
-	admin-username = mytest    #定义内部管理服务器账号，只做代理不用关注
+	[mysql-proxy]
+    proxy-address = 0.0.0.0:9300    #监听地址和端口
+	admin-address = localhost:4041  #定义内部管理服务器账号，只做代理不用关注
+	admin-username = mytest    
 	admin-password = 123456
 	admin-lua-script = /usr/local/mysql-proxy/lib/mysql-proxy/lua/admin.lua
-	proxy-backend-addresses = 192.168.0.56:3306
-
-其中proxy-backend-addresses为实际mysql地址
+	proxy-backend-addresses = 192.168.0.56:3306  #实际mysql地址
 
 启动：
 
