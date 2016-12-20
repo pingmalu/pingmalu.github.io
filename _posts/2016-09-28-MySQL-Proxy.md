@@ -27,3 +27,9 @@ title:  "MySQL-Proxy"
 启动：
 
 	/usr/local/mysql-proxy/bin/mysql-proxy --defaults-file=/usr/local/mysql-proxy/mysql-proxy.conf &
+
+# 注：
+
+mysql-proxy.conf配置文件权限设置为0660
+
+配置文件里的中文注释不能跟在后面，请自行删除。
