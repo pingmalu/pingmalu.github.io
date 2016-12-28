@@ -46,6 +46,14 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+th {
+    color: #fff;
+    background-color: #555;
+    border: 1px solid #555;
+    font-size: 12px;
+    padding: 3px;
+    vertical-align: top;
+}
 td {
     min-width: 24px;
     border: 1px solid #d4d4d4;
