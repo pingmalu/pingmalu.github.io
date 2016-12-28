@@ -46,6 +46,12 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+td {
+    min-width: 24px;
+    border: 1px solid #d4d4d4;
+    padding: 5px;
+    vertical-align: top;
+}
 // Apply a natural box layout model to all elements
 // from: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 *, *:before, *:after {
