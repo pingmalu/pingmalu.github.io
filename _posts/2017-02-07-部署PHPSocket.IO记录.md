@@ -97,7 +97,7 @@ Status
 
 	由于walkman依赖PHP的pcntl多进程扩展，所以需要先安装该扩展：
 	
-	# 进入PHP源码包扩展目录
+	# 进入PHP源码包扩展目录,如果不存在则去官网下载,下载对应版本提取出来 http://php.net/releases/
 	cd /data/soft/php/php-5.6.3/ext/pcntl
 	/usr/bin/phpize
 	./configure --with-php-config=/usr/local/php/bin/php-config
