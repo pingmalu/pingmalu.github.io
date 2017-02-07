@@ -111,6 +111,18 @@ Status
 	# 重启php-fpm
 	/etc/init.d/php-fpm restart
 
+	另外一种安装的方法
+	centos
+	1、命令行运行yum install php-cli php-process git php-devel php-pear libevent-devel
+	2、命令行运行pecl install channel://pecl.php.net/libevent-0.1.0
+	3、命令行运行echo extension=libevent.so > /etc/php.d/libevent.ini
+	
+	debian/ubuntu
+	1、命令行运行apt-get update && apt-get install php5-cli git php-pear php5-dev libevent-dev
+	2、命令行运行pecl install channel://pecl.php.net/libevent-0.1.0
+	3、命令行运行echo extension=libevent.so > /etc/php5/cli/conf.d/libevent.ini
+
+
 验证model加载情况：
 
 	> php -m |grep pcntl
