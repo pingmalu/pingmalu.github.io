@@ -122,3 +122,8 @@ Status
 解决办法：
 
 发送时对消息使用encodeURIComponent编码，接收端使用decodeURIComponent解码
+
+
+### 本地与线上调试通讯，在IE9以下无法收发
+
+因为在跨域的时候，IE9以下优先用的不是jsonp，而是xhr-polling（XDomainRequest），因为XDomainRequest跨域请求localhost会拒绝访问
