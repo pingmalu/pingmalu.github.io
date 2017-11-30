@@ -11,9 +11,9 @@ title: PHP安装mongoDB扩展
 
 去这个网站下载最新版本 [http://pecl.php.net/package/mongo](http://pecl.php.net/package/mongo)
 
-	wget http://pecl.php.net/get/mongo-1.6.13.tgz -P /root/
-    tar -zxvf /root/mongo-1.6.13.tgz -C /root/
-    cd /root/mongo-1.6.13/
+	wget http://pecl.php.net/get/mongo-1.6.16.tgz -P /root/
+    tar -zxvf /root/mongo-1.6.16.tgz -C /root/
+    cd /root/mongo-1.6.16/
     phpize
     ./configure
     make install
@@ -26,6 +26,10 @@ title: PHP安装mongoDB扩展
 #### 如果遇到: sh: 1: phpize: not found
 
     apt-get install php5-dev
+
+### 如果遇到： configure: error: Cannot find OpenSSL's libraries
+
+	apt-get install libcurl4-openssl-dev
 
 ### 安装完需要把模块写入php.ini配置文件
 
