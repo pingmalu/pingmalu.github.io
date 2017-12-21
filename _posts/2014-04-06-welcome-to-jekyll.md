@@ -3,6 +3,10 @@ layout: post
 title:  "在线手册"
 ---
 
+# [Python]
+
+Kivy中文编程指南 | Think Python [https://www.gitbook.com/@cycleuser](https://www.gitbook.com/@cycleuser)
+
 # [虚拟机]
 
 virtualbox 官方文档 [https://www.virtualbox.org/wiki/Documentation](https://www.virtualbox.org/wiki/Documentation)
