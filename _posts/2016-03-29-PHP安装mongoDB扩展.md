@@ -3,6 +3,12 @@ layout: post
 title: PHP安装mongoDB扩展
 ---
 
+# windows下安装php_mongo扩展
+
+下载32位TS版本：http://pecl.php.net/package/mongo/1.6.16/windows
+
+把dll文件放入ext目录，然后去php.ini开启插件
+
 ### 快速安装
 
 	pecl install mongo
