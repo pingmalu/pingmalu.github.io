@@ -3,13 +3,23 @@ layout: post
 title: PHP安装mongoDB扩展
 ---
 
+# windows下安装php_mongodb扩展  (注意! php_mongo扩展官方已经废弃，建议使用php_mongodb)
+
+下载32位TS版本：http://pecl.php.net/package/mongodb
+
+把dll文件放入ext目录，然后去php.ini开启插件 
+
+	extension=php_mongodb.dll
+
+如果是XAMPP建议升级到最新版本，老版本插件可能无法安装
+
 # windows下安装php_mongo扩展
 
-下载32位TS版本：http://pecl.php.net/package/mongo/1.6.16/windows
+下载32位TS版本：http://pecl.php.net/package/mongo
 
 把dll文件放入ext目录，然后去php.ini开启插件
 
-### 快速安装
+# linux快速安装
 
 	pecl install mongo
 
