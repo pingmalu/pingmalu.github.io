@@ -33,6 +33,9 @@ title: PHP安装mongoDB扩展
 
 	extension=mongodb.so
 
+顺带说下PDO Driver for PostgreSQL安装：
+
+	apt intall php5-pgsql
 
 ### 源码安装
 
