@@ -25,7 +25,7 @@ title: PHP安装mongoDB扩展
 
 安装pecl以及依赖包：
 
-	apt install php-pear php-dev libpcre3 libpcre3-dev 
+	apt install php-pear php5-dev libpcre3 libpcre3-dev 
 
 	pecl install mongodb
 
