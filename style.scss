@@ -58,6 +58,20 @@ h1 {
   font-size: 22px;
 }
 
+.posts {
+  h1{
+    font-size: 25px;
+  }
+  .entry {
+    h1 {
+      font-size: 18px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: normal;
+    }
+  }
+}
+
 h4 {
   color: $gray;
 }
