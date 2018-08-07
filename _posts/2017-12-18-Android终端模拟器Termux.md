@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Termux使用笔记"
+title:  "Android终端模拟器Termux"
 ---
 
-记录Termux日常使用记录
+Termux是一个Android终端模拟器和Linux环境应用程序，可直接使用，无需root或设置。
 
 
 官网：[https://termux.com/](https://termux.com/)
