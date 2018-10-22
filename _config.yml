@@ -74,3 +74,5 @@ exclude:
     - README.md
 paginate: 10
 paginate_path: "page:num"
+
+theme: jekyll-theme-cayman
