@@ -63,8 +63,9 @@ sass:
   style: :expanded # You might prefer to minify using :compressed
 
 # Use the following plug-ins
-gems:
-  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+plugins:
+#  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+   - jekyll-paginate
 
 # Exclude these files from your production _site
 exclude:
@@ -75,4 +76,7 @@ exclude:
 paginate: 10
 paginate_path: "page:num"
 
-theme: jekyll-theme-cayman
+#theme: jekyll-theme-cayman
+
+port:    11122
+host:    0.0.0.0
