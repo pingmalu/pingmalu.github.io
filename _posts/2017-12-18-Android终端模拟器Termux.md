@@ -202,3 +202,24 @@ termux也有一个额外的按键视图。它允许您使用ESC，CTRL，ALT，T
 'V'→粘贴
 +/-→调整文字大小
 1-9→进入编号会话
+
+
+# 搭建MQTT服务器
+
+安装 mosquitto
+
+	apt install mosquitto
+
+增加用户test，设置密码
+
+	mosquitto_passwd -c /data/data/com.termux/files/usr/etc/mosquitto/passwd test
+
+编辑配置文件 /data/data/com.termux/files/usr/etc/mosquitto/mosquitto.conf
+
+修改监听端口
+
+	listener 1234
+
+启动
+
+	mosquitto -c /data/data/com.termux/files/usr/etc/mosquitto/mosquitto.conf
