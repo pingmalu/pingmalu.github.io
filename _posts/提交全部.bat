@@ -1,6 +1,6 @@
 @echo off
 @echo ========================================================
-@echo Ã·Ωªgit
+@echo commit git
 @echo ========================================================
 
-git add . && git commit -am 'update' && git push && exit
+git add . && git commit -am 'update' && git push
