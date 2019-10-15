@@ -4,4 +4,3 @@
 @echo ========================================================
 
 git add . && git commit -am 'update' && git push && exit
-exit
