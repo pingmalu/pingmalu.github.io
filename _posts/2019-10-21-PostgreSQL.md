@@ -3,6 +3,22 @@ layout: post
 title: PostgreSQL
 ---
 
+# 将Mysql数据库迁移至PostgreSQL
+
+## 方法一.使用python工具 py-mysql2pgsql
+
+项目地址：https://pypi.org/project/py-mysql2pgsql/
+
+pip安装的时候如果遇到：
+ _mysql.c(42) : fatal error C1083: Cannot open include file: 'config-win.h': No such file or directory
+
+可以去安装 mysql-python 模块： http://www.codegood.com/archives/129
+
+## 方法二.pgloader
+
+项目地址：https://github.com/dimitri/pgloader
+
+
 ### 设置自增auto_increment
 
 PostgreSQL无法像MySQL一样设置自增id，可以通过计数器来实现：
