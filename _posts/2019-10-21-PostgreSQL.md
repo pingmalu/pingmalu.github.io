@@ -18,8 +18,22 @@ pip安装的时候如果遇到：
 
 项目地址：https://github.com/dimitri/pgloader
 
+# MySQL与PostgreSQL语法差异
 
-### 设置自增auto_increment
+## LIMIT
+
+PostgreSQL不支持 LIMIT ?,? 写法，不过可以用OFFSET代替（MySQL也兼容OFFSET）
+
+比如：
+
+  LIMIT #{offset} , #{pagesize}
+
+可以写成：
+
+  LIMIT #{pagesize} OFFSET #{offset}
+
+
+# PostgreSQL设置自增auto_increment
 
 PostgreSQL无法像MySQL一样设置自增id，可以通过计数器来实现：
 
