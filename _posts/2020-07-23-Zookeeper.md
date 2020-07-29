@@ -136,3 +136,109 @@ start zkServer3.cmd
 .\zkCli.cmd -server localhost:2182
 
 .\zkCli.cmd -server localhost:2183
+
+# zookeeper的ACL权限控制
+
+`acl`权限控制，使用 `scheme:id:permission` 来标识，主要涵盖3个方面：
+
+- 权限模式(`scheme`)：授权的策略
+- 授权对象(`id`)：授权的对象
+- 权限(`permission`)：授予的权限
+
+### 权限模式`scheme`
+
+- 采用何种方式授权
+
+| 方案   | 描述                                                    |
+| ------ | ------------------------------------------------------- |
+| world  | 只有一个用户：`anyone`，代表登录`zookeeper`所有人(默认) |
+| ip     | 对客户端使用IP地址认证                                  |
+| auth   | 使用已添加认证的用户认证                                |
+| digest | 使用"用户名：密码"方式认证                              |
+
+### 授权对象`id`
+
+- 给谁授予权限
+- 授权对象ID是指，权限赋予的实体，例如：IP地址或用户
+
+### 权限`permission`
+
+- 授予什么权限
+
+| 权限   | ACL简写 | 描述                               |
+| ------ | ------- | ---------------------------------- |
+| create | c       | 可以创建子结点                     |
+| delete | d       | 可以删除子结点(仅下一级结点)       |
+| read   | r       | 可以读取结点数据以及显示子结点列表 |
+| write  | w       | 可以设置结点数据                   |
+| admin  | a       | 可以设置结点访问控制权限列表       |
+
+**授权的相关命令**
+
+| 命令    | 使用方式 | 描述         |
+| ------- | -------- | ------------ |
+| getAcl  | getAcl   | 读取ACL权限  |
+| setAcl  | setAcl   | 设置ACL权限  |
+| addauth | addauth  | 添加认证用户 |
+
+eg.
+
+```shell
+create /zk "zk"                   # 初始化测试用的结点
+addauth digest malu:123456        # 添加认证用户
+setAcl /zk auth:malu:cdrwa        # 设置认证用户
+quit                              # 退出后再./zkCli.sh 进入
+get /zk                           # 这个时候就没有权限了，需要再次认证
+addauth digest malu:123456        # 认证，密码错了的话 zookeeper 不会报错，但是不能认证
+get /zk
+```
+
+**多种授权模式**
+
+仅需逗号隔开
+
+```shell
+setAcl /zk ip:192.168.1.27:cdrwa,auth:malu:cdrwa,digest:malu:pl570Xd7m2mTrsmMA9zKyO3hCAU=:cdrwa
+```
+
+###  ACL超级管理员
+
+- `zookeeper`的权限管理模式有一种叫做`super`，该模式提供一个超管，可以方便的访问任何权限的节点
+
+  假设这个超管是`supper:admin`，需要为超管生产密码的密文
+
+  ```shell
+  echo -n super:admin | openssl dgst -binary -sha1 | openssl base64
+  ```
+
+- 那么打开`zookeeper`目录下`/bin/zkServer.sh`服务器脚本文件，找到如下一行：
+
+  ```shell
+   /nohup # 快速查找，可以看到如下
+   nohup "$JAVA" "-Dzookeeper.log.dir=${ZOO_LOG_DIR}" "-Dzookeeper.root.logger=${ZOO_LOG4J_PROP}"
+  ```
+
+- 这个就算脚本中启动`zookeeper`的命令，默认只有以上两个配置项，我们需要添加一个超管的配置项
+
+  ```
+  "-Dzookeeper.DigestAuthenticationProvider.superDigest=super:xQJmxLMiHGwaqBvst5y6rkB6HQs="
+  ```
+
+- 修改后命令变成如下
+
+  ```shell
+  nohup "$JAVA" "-Dzookeeper.log.dir=${ZOO_LOG_DIR}" "-Dzookeeper.root.logger=${ZOO_LOG4J_PROP}" "-Dzookeeper.DigestAuthenticationProvider.superDigest=super:xQJmxLMiHGwaqBvst5y6rkB6HQs="
+  ```
+
+  ``` shell
+  # 重起后，现在随便对任意节点添加权限限制
+  setAcl /zk ip:192.168.1.21:cdrwa # 这个ip并非本机
+  # 现在当前用户没有权限了
+  getAcl /zk
+  # 登录超管
+  addauth digest super:admin
+  # 强行操作节点
+  get /hadoop
+  ```
+
+  
