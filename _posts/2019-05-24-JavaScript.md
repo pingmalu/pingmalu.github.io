@@ -5,7 +5,7 @@ title: JavaScript
 
 # JavaScript 中等号判断
 
-[![JavaScript](https://wx2.sinaimg.cn/orj360/a83bb572gy1g30lcizj9aj21bi12vjxs.jpg)](https://wx2.sinaimg.cn/orj360/a83bb572gy1g30lcizj9aj21bi12vjxs.jpg)
+[![JavaScript](https://wx2.sinaimg.cn/large/a83bb572gy1g30lcizj9aj21bi12vjxs.jpg)](https://wx2.sinaimg.cn/large/a83bb572gy1g30lcizj9aj21bi12vjxs.jpg)
 
 
 # ES6 浏览器兼容
