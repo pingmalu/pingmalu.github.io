@@ -353,6 +353,10 @@ nav a:hover {
     color: $gray;
   }
 
+  blockquote p {
+    word-break: break-all;
+  }
+
   .comments {
     margin-top: 10px;
   }
