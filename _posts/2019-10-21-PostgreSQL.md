@@ -38,8 +38,10 @@ PostgreSQL不支持 LIMIT ?,? 写法，不过可以用OFFSET代替（MySQL也兼
 PostgreSQL无法像MySQL一样设置自增id，可以通过计数器来实现：
 
 ```sql
--- 创建该的计数器
+-- 创建该的计数器sequence
 CREATE SEQUENCE seq_test_id;
+-- 设置 sequence 的开始值
+SELECT setval('seq_test_id', 20);
 -- 设置id的值，从计数器获取
 ALTER TABLE "public".test ALTER COLUMN id SET DEFAULT nextval('seq_test_id');
 ```
