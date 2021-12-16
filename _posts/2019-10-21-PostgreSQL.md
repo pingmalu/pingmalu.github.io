@@ -5,6 +5,10 @@ title: PostgreSQL
 
 # 将Mysql数据库迁移至PostgreSQL
 
+## 简单的方法：使用Navicat Premium复制功能
+
+选中源表名-右击复制-到新库里粘贴
+
 ## 方法一.使用python工具 py-mysql2pgsql
 
 项目地址：https://pypi.org/project/py-mysql2pgsql/
