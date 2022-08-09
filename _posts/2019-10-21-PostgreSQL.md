@@ -69,6 +69,22 @@ LIMIT #{offset} , #{pagesize}
 LIMIT #{pagesize} OFFSET #{offset}
 ```
 
+## DATE_ADD
+
+PostgreSQL不支持DATE_ADD写法，使用timestamp代替
+
+比如：
+
+```
+DATE_ADD(#{nowTime},INTERVAL -#{timeout} SECOND)
+```
+
+改成：
+
+```
+timestamp '${nowTime}'::timestamp + interval '-${timeout}) sec'
+```
+
 # PostgreSQL设置自增auto_increment
 
 PostgreSQL无法像MySQL一样设置自增id，可以通过计数器来实现：
