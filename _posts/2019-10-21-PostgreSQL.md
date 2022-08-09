@@ -9,7 +9,7 @@ title: PostgreSQL
 
 选中源表名-右击复制-到新库里粘贴
 
-## 方法一.使用python工具 py-mysql2pgsql
+## 方法一.使用python工具 py-mysql2pgsql(python3下不支持)
 
 项目地址：https://pypi.org/project/py-mysql2pgsql/
 
@@ -18,9 +18,38 @@ pip安装的时候如果遇到：
 
 可以去安装 mysql-python 模块： http://www.codegood.com/archives/129
 
-## 方法二.pgloader
+## 方法二.pgloader(推荐用该命令)
 
-项目地址：https://github.com/dimitri/pgloader
+项目地址：[https://github.com/dimitri/pgloader](https://github.com/dimitri/pgloader)
+
+1.安装：
+
+```
+apt install pgloader
+```
+
+2.创建迁移配置文件 mysql_to_pgsql.load
+
+```
+LOAD DATABASE
+        FROM mysql://username@192.168.50.1:3306/xxl_job
+        INTO postgresql://server?sslmode=allow
+        WITH include drop, create tables, create indexes, workers = 8, concurrency = 1
+ALTER SCHEMA 'xxl_job' RENAME TO 'public';
+```
+
+3.执行配置文件
+
+```
+pgloader -v --no-ssl-cert-verification mysql_to_pgsql.load
+```
+
+4.也可以单个命令中执行
+
+```
+pgloader mysql://user@localhost/sakila postgresql:///pagila?sslmode=allow
+```
+
 
 # MySQL与PostgreSQL语法差异
 
@@ -30,12 +59,15 @@ PostgreSQL不支持 LIMIT ?,? 写法，不过可以用OFFSET代替（MySQL也兼
 
 比如：
 
-  LIMIT #{offset} , #{pagesize}
+```
+LIMIT #{offset} , #{pagesize}
+```
 
 可以写成：
 
-  LIMIT #{pagesize} OFFSET #{offset}
-
+```
+LIMIT #{pagesize} OFFSET #{offset}
+```
 
 # PostgreSQL设置自增auto_increment
 
