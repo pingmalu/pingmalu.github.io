@@ -100,7 +100,7 @@ vim ~/.bashrc进入配置文件,添加以下两行：
     #deb https://nvidia.github.io/nvidia-container-runtime/experimental/ubuntu18.04/$(ARCH) /
     deb https://nvidia.github.io/nvidia-docker/ubuntu18.04/$(ARCH) /
 
-安装 nvidia-container-toolkit 软件包：
+安装 nvidia-container-toolkit 软件包 （或者安装 nvidia-docker2 试试 https://github.com/NVIDIA/nvidia-docker）：
 
     apt-get install nvidia-container-toolkit
 
