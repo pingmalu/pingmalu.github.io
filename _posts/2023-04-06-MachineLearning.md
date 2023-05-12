@@ -3,6 +3,21 @@ layout: post
 title: MachineLearning
 ---
 
+
+# stable-diffusion
+
+## webui
+
+命令仓库：
+
+[https://github.com/camenduru/stable-diffusion-webui-colab](https://github.com/camenduru/stable-diffusion-webui-colab)
+
+启动命令：
+
+[https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings)
+
+
+
 # 神经网络模型可视化
 
 ##  PyTorch 自带的可视化工具 torchviz 
