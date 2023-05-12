@@ -17,6 +17,9 @@ title: MachineLearning
 [https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings)
 
 
+汉化扩展：https://github.com/hanamizuki-ai/stable-diffusion-webui-localization-zh_Hans
+
+
 
 # 神经网络模型可视化
 
