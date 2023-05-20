@@ -26,6 +26,11 @@ title: MachineLearning
 
 图库浏览器扩展：https://github.com/AlUlkesh/stable-diffusion-webui-images-browser
 
+提示词自动补全扩展：https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git  -> 汉化提示词（复制到tags目录）：http://www.123114514.xyz/d/WebUI/Tag/a1111-sd-webui-tagcomplete.zip
+
+反推提示词（tagg）：https://github.com/toriato/stable-diffusion-webui-wd14-tagger  -> 要重启命令才生效
+
+
 # 神经网络模型可视化
 
 ##  PyTorch 自带的可视化工具 torchviz 
