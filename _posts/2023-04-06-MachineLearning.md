@@ -30,6 +30,9 @@ title: MachineLearning
 
 反推提示词（tagg）：https://github.com/toriato/stable-diffusion-webui-wd14-tagger  -> 要重启命令才生效
 
+controlnet: https://github.com/Mikubill/sd-webui-controlnet
+
+
 
 # 神经网络模型可视化
 
