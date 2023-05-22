@@ -26,11 +26,11 @@ title: MachineLearning
 
 图库浏览器扩展：https://github.com/AlUlkesh/stable-diffusion-webui-images-browser
 
-提示词自动补全扩展：https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git  -> 汉化提示词（复制到tags目录）：http://www.123114514.xyz/d/WebUI/Tag/a1111-sd-webui-tagcomplete.zip
+提示词自动补全扩展：https://github.com/DominikDoom/a1111-sd-webui-tagcomplete.git  -> 汉化提示词（复制到extensions\a1111-sd-webui-tagcomplete\tags目录）：http://www.123114514.xyz/d/WebUI/Tag/a1111-sd-webui-tagcomplete.zip
 
 反推提示词（tagg）：https://github.com/toriato/stable-diffusion-webui-wd14-tagger  -> 要重启命令才生效
 
-controlnet: https://github.com/Mikubill/sd-webui-controlnet
+controlnet: https://github.com/Mikubill/sd-webui-controlnet -> 模型文件（复制到models\ControlNet目录）：https://huggingface.co/lllyasviel/ControlNet-v1-1/tree/main
 
 
 
