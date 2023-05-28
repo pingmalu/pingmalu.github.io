@@ -32,6 +32,7 @@ title: MachineLearning
 
 controlnet: https://github.com/Mikubill/sd-webui-controlnet -> 模型文件（复制到models\ControlNet目录）：https://huggingface.co/lllyasviel/ControlNet-v1-1/tree/main
 
+3D Openpose Editor: https://github.com/nonnonstop/sd-webui-3d-open-pose-editor ([在线直接使用](https://zhuyu1997.github.io/open-pose-editor/))
 
 
 # 神经网络模型可视化
