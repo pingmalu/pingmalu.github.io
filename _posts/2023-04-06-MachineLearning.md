@@ -3,6 +3,56 @@ layout: post
 title: MachineLearning
 ---
 
+# stable-baselines3
+
+## 强化学习算法训练日志指标和参数解释
+
+    -----------------------------------------
+    | rollout/                |             |
+    |    ep_len_mean          | 2.24e+03    |
+    |    ep_rew_mean          | 1.38e+03    |
+    | time/                   |             |
+    |    fps                  | 185         |
+    |    iterations           | 298         |
+    |    time_elapsed         | 3295        |
+    |    total_timesteps      | 610304      |
+    | train/                  |             |
+    |    approx_kl            | 0.024709977 |
+    |    clip_fraction        | 0.11        |
+    |    clip_range           | 0.2         |
+    |    entropy_loss         | -0.26       |
+    |    explained_variance   | 0.936       |
+    |    learning_rate        | 0.0003      |
+    |    loss                 | 0.425       |
+    |    n_updates            | 2970        |
+    |    policy_gradient_loss | -0.016      |
+    |    value_loss           | 4.92        |
+    -----------------------------------------
+
+
+- rollout/ep_len_mean：这是每个回合（episode）的平均长度，即每个回合中执行的平均步数（step）。回合是强化学习中的一个基本概念，指的是智能体（agent）从初始状态开始，与环境（environment）交互，直到达到终止状态的过程。回合长度越长，说明智能体能够在环境中存活越久。
+- rollout/ep_rew_mean：这是每个回合的平均奖励（reward），即每个回合中获得的平均累积奖励。奖励是强化学习中的另一个基本概念，指的是环境对智能体行为的反馈，用来评价行为的好坏。奖励越高，说明智能体表现越好。
+
+- time/fps：这是训练过程中的帧率（frames per second），即每秒钟处理的步数。帧率越高，说明训练速度越快。
+- time/iterations：这是训练过程中的迭代次数（iterations），即更新策略（policy）的次数。迭代次数越多，说明训练越充分。
+- time/time_elapsed：这是训练过程中消耗的时间（time elapsed），以秒为单位。时间越短，说明训练效率越高。
+- time/total_timesteps：这是训练过程中总共执行的步数（total timesteps），即智能体与环境交互的总次数。步数越多，说明训练数据越多。
+
+- train/approx_kl：这是训练过程中近似的KL散度（approximate Kullback-Leibler divergence），即新旧策略之间的差异程度。KL散度是一种衡量两个概率分布相似性的指标，越小说明越相似。在某些强化学习算法中，KL散度可以用来控制策略更新的步长，避免更新过大导致不稳定。
+- train/clip_fraction：这是训练过程中被裁剪（clipped）的梯度比例（gradient ratio）。在某些强化学习算法中，为了防止策略更新过大，会对梯度进行裁剪，即限制梯度在一个范围内。裁剪比例越高，说明更新幅度越大。
+- train/clip_range：这是训练过程中梯度裁剪的范围（gradient clipping range）。它是一个超参数（hyperparameter），可以根据实验效果进行调整。
+- train/entropy_loss：这是训练过程中的熵损失（entropy loss），即策略熵（policy entropy）的相反数。熵是一种衡量不确定性的指标，越高说明越不确定。在某些强化学习算法中，为了增加策略的探索性（exploration），会给目标函数加上一个熵项，使得策略更倾向于选择不确定性高的行为。熵损失越低，说明策略更多样化。
+- train/explained_variance：这是训练过程中的可解释方差（explained variance），即价值函数（value function）对回报（return）的预测准确度。可解释方差是一种衡量回归模型拟合效果的指标，越接近1说明越准确。
+- train/learning_rate：这是训练过程中的学习率（learning rate），即梯度下降法中更新参数的速率。它也是一个超参数，可以根据实验效果进行调整。
+- train/loss：这是训练过程中的总损失（total loss），即目标函数（objective function）的值。损失越小，说明模型性能越好。
+- train/n_updates：这是训练过程中的更新次数（update times），即更新参数的次数。更新次数越多，说明训练越充分。
+- train/policy_gradient_loss：这是训练过程中的策略梯度损失（policy gradient loss），即基于策略梯度法优化策略时产生的损失。策略梯度法是一种强化学习算法，它通过直接优化策略来提高期望奖励。策略梯度损失越小，说明策略性能越好。
+- train/value_loss：这是训练过程中的价值损失（value loss），即基于最小二乘法优化价值函数时产生的损失。价值函数是一种估计未来回报的函数，在某些强化学习算法中，它可以辅助策略优化或者直接作为输出。价值损失越小，说明价值函数越准确。
+
+
+
+
+
 
 # stable-diffusion
 
