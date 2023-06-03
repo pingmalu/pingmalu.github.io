@@ -119,6 +119,15 @@ if self.args.show_model:
 ...
 ```
 
+# Windows 安装CUDA
+
+从NVIDIA官网下载CUDA的安装包
+
+CUDA Toolkit下载地址: [https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)
+
+# Windows 下 pytoch CUDA安装
+
+从pytorch官网下载对应CUDA版本: [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
 
 
 # WSL2安装CUDA
