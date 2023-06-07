@@ -87,6 +87,66 @@ controlnet: https://github.com/Mikubill/sd-webui-controlnet -> 模型文件（�
 
 # 神经网络模型可视化
 
+
+## 在tensorboard里可视化 StableBaselines3 的模型网络结构
+
+Stable-Baselines3 默认支持 TensorBoard，但它不直接支持在 TensorBoard 中可视化模型网络结构。要在 TensorBoard 中可视化模型网络结构，可以使用 PyTorch 的 `SummaryWriter` 类。以下是一个示例：
+
+首先，确保安装了所需的库：
+
+```bash
+pip install stable-baselines3 tensorboard
+```
+
+然后，你可以使用以下代码在 TensorBoard 中可视化模型网络结构：
+
+```python
+import os
+import torch
+from torch.utils.tensorboard import SummaryWriter
+from stable_baselines3 import PPO
+from stable_baselines3.common.vec_env import DummyVecEnv
+from stable_baselines3.common.env_util import make_atari_env
+
+# 创建 Atari 游戏环境
+env_id = "BreakoutNoFrameskip-v4"
+env = make_atari_env(env_id, n_envs=1, seed=0)
+env = DummyVecEnv([lambda: env])
+
+# 使用 PPO 算法训练模型
+model = PPO("CnnPolicy", env, verbose=1)
+
+# 获取模型的神经网络
+policy_net = model.policy.to("cpu")
+
+# 为可视化创建一个虚拟输入
+dummy_input = torch.randn(1, *env.observation_space.shape)
+
+# 设置 TensorBoard 日志目录
+log_dir = "tensorboard_logs"
+os.makedirs(log_dir, exist_ok=True)
+
+# 使用 PyTorch 的 SummaryWriter 将模型网络结构写入 TensorBoard
+writer = SummaryWriter(log_dir)
+writer.add_graph(policy_net, dummy_input)
+writer.close()
+```
+
+这段代码首先创建一个 Atari 游戏环境，然后使用 PPO 算法训练模型。接下来，它获取模型的神经网络并将其转换为 CPU 设备。然后，它创建一个虚拟输入。接下来，它设置 TensorBoard 日志目录并使用 PyTorch 的 `SummaryWriter` 将模型网络结构写入 TensorBoard。
+
+要查看 TensorBoard 中的模型网络结构，请在命令行中运行以下命令：
+
+```bash
+tensorboard --logdir tensorboard_logs
+```
+
+然后，在浏览器中打开显示的 URL（通常为 `http://localhost:6006`），并导航到 "Graphs" 标签以查看模型网络结构。
+
+请注意，这个示例使用了 PPO 算法和 Atari 游戏环境。你可以根据需要替换为其他算法和环境。
+
+
+
+
 ##  PyTorch 自带的可视化工具 torchviz 
 
 ### Windows下安装
