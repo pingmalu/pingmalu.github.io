@@ -7,11 +7,14 @@ title: MachineLearning
 
 ## 梯度
 
-存在reward上升趋势：
-cd3dd01 2023-06-11 17:23 [malu] m -ne 10000000 -c11_1 10 -cpu
-self.LR = 0.0003
-gamma=0.9
-PPO_5
+### 存在reward上升趋势：
+
+    PPO_5 m1
+    cd3dd01 2023-06-11 17:23 [malu] m -ne 10000000 -c11_1 10 -cpu
+    # 超参数
+    self.policy_kwargs = dict(net_arch=[128, 128])
+    self.LR = 0.0003
+    self.gamma = 0.9
 
 
 ## 强化学习训练日志指标和参数解释
