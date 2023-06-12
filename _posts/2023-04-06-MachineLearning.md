@@ -9,8 +9,21 @@ title: MachineLearning
 
 ### 存在reward上升趋势：
 
-    PPO_5 m1
-    cd3dd01 2023-06-11 17:23 [malu] m -ne 10000000 -c11_1 10 -cpu
+2023-06-12
+
+m1
+
+    PPO_7
+    m -ne 10000000 -c11_1 10 -c11_2 200
+    # 超参数
+    self.policy_kwargs = dict(net_arch=[128, 128])
+    self.LR = 0.0003
+    self.gamma = 0.9
+
+m4
+
+    PPO_4
+    m -ne 10000000 -c11_1 10 -c11_2 20
     # 超参数
     self.policy_kwargs = dict(net_arch=[128, 128])
     self.LR = 0.0003
