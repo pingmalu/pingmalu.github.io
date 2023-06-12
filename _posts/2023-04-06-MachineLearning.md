@@ -15,6 +15,8 @@ m1
 
     PPO_7
     m -ne 10000000 -c11_1 10 -c11_2 200
+    PPO_8
+    m -ne 10000000 -c11_1 10 -c11_2 100
     # 超参数
     self.policy_kwargs = dict(net_arch=[128, 128])
     self.LR = 0.0003
