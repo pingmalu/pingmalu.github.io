@@ -5,6 +5,15 @@ title: MachineLearning
 
 # stable-baselines3
 
+## 梯度
+
+存在reward上升趋势：
+cd3dd01 2023-06-11 17:23 [malu] m -ne 10000000 -c11_1 10 -cpu
+self.LR = 0.0003
+gamma=0.9
+PPO_5
+
+
 ## 强化学习训练日志指标和参数解释
 
     -----------------------------------------
