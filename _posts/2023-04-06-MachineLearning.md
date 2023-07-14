@@ -76,8 +76,12 @@ m4
 - train/policy_gradient_loss：这是训练过程中的策略梯度损失（policy gradient loss），即基于策略梯度法优化策略时产生的损失。策略梯度法是一种强化学习算法，它通过直接优化策略来提高期望奖励。策略梯度损失越小，说明策略性能越好。
 - train/value_loss：这是训练过程中的价值损失（value loss），即基于最小二乘法优化价值函数时产生的损失。价值函数是一种估计未来回报的函数，在某些强化学习算法中，它可以辅助策略优化或者直接作为输出。价值损失越小，说明价值函数越准确。
 
+# tensorRT
 
+## 安装
 
+    pip install --extra-index-url https://pypi.nvidia.com tensorrt-libs
+    pip install --extra-index-url https://pypi.nvidia.com tensorrt
 
 
 
