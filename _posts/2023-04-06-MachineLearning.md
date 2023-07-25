@@ -5,31 +5,35 @@ title: MachineLearning
 
 # stable-baselines3
 
+    pip install stable-baselines3[extra]==2.0.0
+
+[https://stable-baselines3.readthedocs.io/en/v2.0.0](https://stable-baselines3.readthedocs.io/en/v2.0.0)
+
 ## 梯度
 
 ### 存在reward上升趋势：
 
-2023-06-12
+2023-07-25
+
+    # 超参
+    self.policy_kwargs = dict(net_arch=[128, 128])
+    self.LR = 0.0003
+    self.gamma = 0.9
+    seed = 27
+
+m4
+    c13: 1247
+    PPO_28
+    m -ne 5000000
 
 m1
 
+    c13: 320
     PPO_7
-    m -ne 10000000 -c11_1 10 -c11_2 200
-    PPO_8
-    m -ne 10000000 -c11_1 10 -c11_2 100
-    # 超参数
-    self.policy_kwargs = dict(net_arch=[128, 128])
-    self.LR = 0.0003
-    self.gamma = 0.9
+    m -ne 5000000
 
-m4
 
-    PPO_4
-    m -ne 10000000 -c11_1 10 -c11_2 20
-    # 超参数
-    self.policy_kwargs = dict(net_arch=[128, 128])
-    self.LR = 0.0003
-    self.gamma = 0.9
+
 
 
 ## 强化学习训练日志指标和参数解释
