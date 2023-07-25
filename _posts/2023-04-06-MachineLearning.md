@@ -9,6 +9,8 @@ title: MachineLearning
 
 [https://stable-baselines3.readthedocs.io/en/v2.0.0](https://stable-baselines3.readthedocs.io/en/v2.0.0)
 
+[https://gymnasium.farama.org/v0.28.1/](https://gymnasium.farama.org/v0.28.1/)
+
 ## 梯度
 
 ### 存在reward上升趋势：
