@@ -35,6 +35,28 @@ m1
     PPO_7
     m -ne 5000000
 
+    m -ne 10000000 --timer 1m -ms 120
+    |    ep_len_mean          | 1.45e+05  |
+    |    ep_rew_mean          | -133      |
+    531 it/s
+    5:08:46
+    model-20230728T025041-okx-XCH_USDT_USDT-1m-T100-NE10000000.c13
+
+本次：
+
+    batch_size 120
+    minima_size 120
+    b:m = 1:1
+
+默认：
+
+    batch_size 120
+    minima_size 24
+    b:m = 5:1
+
+用b:m = 5:1测试：
+
+    m -ne 5000000 --timer 1m -bs 600 -ms 120
 
 
 
