@@ -28,6 +28,14 @@ m4
     c13: 1247
     PPO_28
     m -ne 5000000
+    reward:988
+    
+    m -t 700 -ne 10000000
+    PPO_38
+    reward:
+    |    ep_len_mean          | 1.55e+04   |
+    |    ep_rew_mean          | 193        |
+    2:10:30 < 0:00:00 , 1,244 it/s
 
 m1
 
@@ -54,10 +62,21 @@ m1
     minima_size 24
     b:m = 5:1
 
-用b:m = 5:1测试：
+用M4 b:m = 5:1测试：
 
     m -ne 5000000 --timer 1m -bs 600 -ms 120
 
+出现reword：
+
+    |    ep_len_mean          | 1.44e+05  |
+    |    ep_rew_mean          | -6.83e+03 |
+
+end:
+
+    |    ep_len_mean          | 1.44e+05  |
+    |    ep_rew_mean          | -225      |
+    2:03:27 < 0:00:00 , 628 it/s
+    model-20230731T121038-okx-XCH_USDT_USDT-1m-T100-NE5000000.c13
 
 
 
