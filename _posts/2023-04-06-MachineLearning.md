@@ -13,6 +13,22 @@ title: MachineLearning
 
 ## 梯度
 
+### 策略网络
+
+    self.policy_kwargs = dict(net_arch=dict(pi=[256, 256, 256],vf=[128, 256, 128]))
+
+```
+        obs
+   /            \
+ <256>          <128>
+  |              |
+ <256>          <256>
+  |              |
+ <256>          <128>
+  |              |
+policy_net    value_net
+```
+
 ### 存在reward上升趋势：
 
 2023-07-25
