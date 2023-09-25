@@ -5,11 +5,30 @@ title: MachineLearning
 
 # stable-baselines3
 
-    pip install stable-baselines3[extra]==2.0.0
+    pip install stable-baselines3[extra]
 
-[https://stable-baselines3.readthedocs.io/en/v2.0.0](https://stable-baselines3.readthedocs.io/en/v2.0.0)
+[https://stable-baselines3.readthedocs.io/en/master/](https://stable-baselines3.readthedocs.io/en/master/)
 
 [https://gymnasium.farama.org/v0.28.1/](https://gymnasium.farama.org/v0.28.1/)
+
+## PPO
+
+stable-baselines PPO算法的各个参数的具体含义如下：
+
+    policy: 用于指定策略网络的类型，可以是MlpPolicy, CnnPolicy等，也可以是自定义的网络类，需要继承BasePolicy类。
+    env: 用于指定环境的名称或对象，需要符合gym风格的接口，即包含reset, step, render等方法。
+    learning_rate: 用于指定学习率，可以是一个固定的数值，也可以是一个随着训练进度变化的函数。
+    n_steps: 用于指定每次更新前需要经过的时间步，也就是每次收集多少条轨迹数据后进行一次梯度更新，该参数会影响算法的采样效率和更新频率。
+    batch_size: 用于指定每次梯度更新时使用的小批量数据的大小，该参数会影响算法的内存占用和并行计算效率。
+    n_epochs: 用于指定每次梯度更新时对同一批数据重复优化的次数，该参数会影响算法的收敛速度和稳定性。
+    gamma: 用于指定折扣因子，即对未来奖励的衰减程度，该参数会影响算法对长期回报和短期回报的偏好。
+    gae_lambda: 用于指定广义优势估计（GAE）中平衡偏差和方差的参数，该参数会影响算法对策略改进的灵敏度和稳健性。
+    clip_range: 用于指定策略网络参数的裁剪范围，即限制策略改变的幅度，该参数会影响算法对探索和利用的平衡和避免过拟合的能力。
+    clip_range_vf: 用于指定值函数网络参数的裁剪范围，即限制值函数改变的幅度，该参数会影响算法对值函数估计的准确性和稳定性。
+    normalize_advantage: 用于指定是否对优势函数进行归一化处理，该参数会影响算法对不同状态下策略改进的权重分配。
+    ent_coef: 用于指定损失函数中熵项的系数，即对策略熵的惩罚或奖励程度，该参数会影响算法对探索行为的鼓励或抑制程度。
+    vf_coef: 用于指定损失函数中值函数项的系数，即对值函数误差的惩罚或奖励程度，该参数会影响算法对值函数优化和策略优化的权衡。
+    max_grad_norm: 用于指定梯度裁剪时的最大梯度范数，即限制梯度下降的步长，该参数会影响算法对学习率敏感度和收敛稳定性。
 
 ## 梯度
 
