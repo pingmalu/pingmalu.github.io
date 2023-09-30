@@ -11,6 +11,21 @@ title: MachineLearning
 
 [https://gymnasium.farama.org/v0.28.1/](https://gymnasium.farama.org/v0.28.1/)
 
+## EvalCallback类中各参数解释
+
+eval_env： 用于评估的环境。
+callback_on_new_best： 当找到新的最优模型时触发的回调。
+callback_after_eval： 在每次评估后触发的回调。
+n_eval_episodes： 在每次评估中测试agent的episode数。
+eval_freq： 每次回调之间的timestep数。
+log_path： 评估结果保存的路径。
+best_model_save_path： 保存最优模型的路径。
+deterministic： 在评估时是否使用确定性或随机动作。
+render： 在评估时是否渲染环境。
+verbose： 回调的详细程度。
+warn： 是否在eval_env未被Monitor包装器包装时警告用户。
+
+
 ## PPO
 
 stable-baselines PPO算法的各个参数的具体含义如下：
