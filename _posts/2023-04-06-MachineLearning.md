@@ -11,6 +11,53 @@ title: MachineLearning
 
 [https://gymnasium.farama.org/v0.28.1/](https://gymnasium.farama.org/v0.28.1/)
 
+## sigmoid 函数两种实现性能测试
+
+```python
+import time
+import math
+import numpy as np
+
+def sigmoid_math(x):
+    return 1 / (1 + math.exp(-x))
+
+def sigmoid_numpy(x):
+    return 1 / (1 + np.exp(-x))
+
+
+x = np.random.rand(1000000)
+
+start_time = time.time()
+for i in x:
+    sigmoid_numpy(i)
+end_time = time.time()
+print("sigmoid_numpy 耗时：", end_time - start_time)
+
+start_time = time.time()
+sigmoid_numpy(x)
+end_time = time.time()
+print("sigmoid_numpy narray耗时：", end_time - start_time)
+
+start_time = time.time()
+for i in x:
+    sigmoid_math(i)
+end_time = time.time()
+print("sigmoid_math 耗时：", end_time - start_time)
+
+```
+
+输出：
+
+    $ ./main.py
+    sigmoid_numpy 耗时： 0.6583921909332275
+    sigmoid_numpy narray耗时： 0.008673667907714844
+    sigmoid_math 耗时： 0.1450803279876709
+
+可以看出虽然numpy是c实现，但是在循环体中调用性能不及math方式。
+
+
+
+
 ## EvalCallback类中各参数解释
 
     eval_env： 用于评估的环境。
