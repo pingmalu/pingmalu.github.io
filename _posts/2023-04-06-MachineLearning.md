@@ -3,6 +3,20 @@ layout: post
 title: MachineLearning
 ---
 
+
+### 存在reward上升趋势：
+
+c18推荐超参
+
+```
+-LR 0.0001
+-pk 6
+-c18_k 0.1        # 空惩罚系数
+-c18_c 0.9 \ 0.2  # 持奖励折扣
+-c18_f ?          # 重复动作惩罚值
+```
+
+
 # stable-baselines3
 
     pip install stable-baselines3[extra]
@@ -139,14 +153,6 @@ policy_net    value_net
   |              |
 policy_net    value_net
 ```
-
-### 存在reward上升趋势：
-
-c18推荐超参
-
--LR 0.0001
--c18_c 0.9 \ 0.2
--pk 6
 
 
 ## 强化学习训练日志指标和参数解释
