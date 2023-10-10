@@ -236,6 +236,8 @@ controlnet: https://github.com/Mikubill/sd-webui-controlnet -> 模型文件（�
 
 # 神经网络模型可视化
 
+神经网络图例：[https://www.asimovinstitute.org/neural-network-zoo/](https://www.asimovinstitute.org/neural-network-zoo/)
+
 
 ## 在tensorboard里可视化 StableBaselines3 的模型网络结构
 
