@@ -10,11 +10,16 @@ c18推荐超参
 
 ```
 -LR 0.0001
--pk 6
+-pk 3
 -c18_k 0.1        # 空惩罚系数
 -c18_c 0.9 \ 0.2  # 持奖励折扣
 -c18_f ?          # 重复动作惩罚值
 ```
+
+n_envs: 平衡点2，适当增加可减少训练时间
+
+    env = DummyVecEnv([lambda: TradingEnv(self.config)] * self.args.n_envs)
+
 
 
 # stable-baselines3
