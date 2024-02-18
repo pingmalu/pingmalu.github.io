@@ -81,7 +81,7 @@ $$
 
 其中，$\sigma(x)$ 表示Sigmoid函数， $x$ 为输入， $\beta$ 是一个可学习的参数。
 
-Swish激活函数可以看作是一个带有可学习参数的Sigmoid函数，它的形状类似于ReLU函数，但是具有Sigmoid函数的非线性特性。当$\beta=0$时，Swish激活函数退化为线性函数$f(x)=x$；当$\beta \rightarrow \infty$时，Swish激活函数接近于ReLU函数。
+Swish激活函数可以看作是一个带有可学习参数的Sigmoid函数，它的形状类似于ReLU函数，但是具有Sigmoid函数的非线性特性。当 $\beta=0$ 时，Swish激活函数退化为线性函数 $f(x)=x$ ；当 $\beta \rightarrow \infty$ 时，Swish激活函数接近于ReLU函数。
 
 
 ### linear or None
