@@ -32,6 +32,8 @@ n_envs: 平衡点2，适当增加可减少训练时间
 
 ## 激活函数
 
+如何理解激活函数：[https://zhuanlan.zhihu.com/p/364620596](https://zhuanlan.zhihu.com/p/364620596)
+
 详细解释：[https://blog.csdn.net/hy592070616/article/details/120617176](https://blog.csdn.net/hy592070616/article/details/120617176)
 
 ### Tanh
