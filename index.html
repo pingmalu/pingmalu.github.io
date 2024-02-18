@@ -5,10 +5,7 @@ layout: default
 <div class="posts">
   {% for post in paginator.posts %}
     <article class="post">
-      {% raw %}
-      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      {% endraw %}
-      
+
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
       <div class="entry">

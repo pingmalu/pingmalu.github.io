@@ -2,6 +2,10 @@
 layout: default
 ---
 <article class="post">
+  {% raw %}
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  {% endraw %}
+
   <h1>{{ page.title }}</h1>
   <div class="date">
     {{ page.date | date: "%Y-%m-%d" }}
