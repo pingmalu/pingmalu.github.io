@@ -5,6 +5,17 @@ title: MachineLearning
 
 
 {% raw %}
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
 <script src="https://cdn.staticfile.net/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
 {% endraw %}
 
