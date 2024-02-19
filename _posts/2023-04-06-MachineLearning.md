@@ -53,6 +53,8 @@ n_envs: 平衡点2，适当增加可减少训练时间
 
 详细解释：[https://blog.csdn.net/hy592070616/article/details/120617176](https://blog.csdn.net/hy592070616/article/details/120617176)
 
+神经网络游乐场：[https://playground.tensorflow.org/](https://playground.tensorflow.org/)
+
 ### Sigmoid
 
 Sigmoid激活函数是一种常用的神经网络激活函数，它可以将任意实数映射到 [0,1] 之间的一个值。它的数学表达式是：
