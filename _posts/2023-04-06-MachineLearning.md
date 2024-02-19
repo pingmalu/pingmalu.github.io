@@ -47,7 +47,7 @@ n_envs: 平衡点2，适当增加可减少训练时间
 
 # 激活函数
 
-![激活函数](https://www.analytixlabs.co.in/blog/wp-content/uploads/2023/08/Types-of-activation-function.jpg)
+[![激活函数](https://www.analytixlabs.co.in/blog/wp-content/uploads/2023/08/Types-of-activation-function.jpg)](https://assets-global.website-files.com/5d7b77b063a9066d83e1209c/62b18a8dc83132e1a479b65d_neural-network-activation-function-cheat-sheet.jpeg)
 
 如何理解激活函数：[https://zhuanlan.zhihu.com/p/364620596](https://zhuanlan.zhihu.com/p/364620596)
 
