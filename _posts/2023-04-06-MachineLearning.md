@@ -4,6 +4,10 @@ title: MachineLearning
 ---
 
 
+{% raw %}
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endraw %}
+
 ### 存在reward上升趋势：
 
 c18推荐超参
