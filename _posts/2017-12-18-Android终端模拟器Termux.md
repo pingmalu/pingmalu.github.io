@@ -223,3 +223,13 @@ termux也有一个额外的按键视图。它允许您使用ESC，CTRL，ALT，T
 启动
 
 	mosquitto -c /data/data/com.termux/files/usr/etc/mosquitto/mosquitto.conf
+
+
+# 异常
+
+通过BCompare中sftp的ansi编码模式方式上传中文文件，导致乱码且删不掉文件的解决办法：
+
+将文件移动到同级的上层目录，例如
+
+	mv 文件夹名 ../上层目录/文件夹名
+
