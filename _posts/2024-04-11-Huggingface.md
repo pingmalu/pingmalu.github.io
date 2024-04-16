@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Huggingface
+share: "true"
 ---
 # 源切换
 
@@ -49,3 +50,12 @@ transcriber = pipeline(
   model=r"c:/01_cloud/hf/Belle-whisper-large-v3-zh"
 )
 ```
+
+
+
+## Transformers
+
+[https://huggingface.co/docs/transformers/main/en/main_classes/pipelines](https://huggingface.co/docs/transformers/main/en/main_classes/pipelines)
+
+
+
