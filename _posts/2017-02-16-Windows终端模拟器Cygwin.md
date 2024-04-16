@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Windows终端模拟器Cygwin"
+title: Windows终端模拟器Cygwin
 ---
 
 Cygwin是一个在windows平台上运行的类UNIX模拟环境
