@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "部署PHPSocket.IO记录"
+title: 部署PHPSocket.IO记录
 ---
 
 Github地址：[https://github.com/walkor/phpsocket.io](https://github.com/walkor/phpsocket.io)

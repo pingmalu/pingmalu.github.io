@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "MySQL-Proxy"
+title: MySQL-Proxy
 ---
 
 很多客户端工具可以直接通过代理访问mysql，但是在代码里面用代理比较麻烦。还好mysql官方为我们提供了mysql-proxy套件，可以用它以透明代理方式访问了。
