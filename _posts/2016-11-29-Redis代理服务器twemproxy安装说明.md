@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Redis代理服务器twemproxy安装说明"
+title: Redis代理服务器twemproxy安装说明
 ---
 
 twemproxy是一个twitter开源的一个redis和memcache代理服务器。也叫nutcracker
