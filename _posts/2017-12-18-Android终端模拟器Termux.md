@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Android终端模拟器Termux"
+title: Android终端模拟器Termux
 ---
 
 Termux是一个Android终端模拟器和Linux环境应用程序，可直接使用，无需root或设置。
