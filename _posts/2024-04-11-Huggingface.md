@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Huggingface
-share: "true"
 ---
 # 源切换
 
