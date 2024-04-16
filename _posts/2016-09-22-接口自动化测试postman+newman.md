@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "接口自动化测试postman+newman"
+title: 接口自动化测试postman+newman
 ---
 
 postman下载地址：
