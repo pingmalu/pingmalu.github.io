@@ -10,8 +10,8 @@ Record the basic information of machine learning here
 <script>
   window.MathJax = {
     tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      inlineMath: [[', '], ['\(', '\)'|', '], ['\(', '\)']],
+      displayMath: [['$', '$'], ['\[', '\]'|', '], ['\[', '\]']]
     },
     svg: {
       fontCache: 'global'
