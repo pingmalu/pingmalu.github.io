@@ -1,6 +1,7 @@
 ---
 layout: post
 title: MachineLearning
+share: "true"
 ---
 
 Record the basic information of machine learning here
