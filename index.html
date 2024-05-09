@@ -9,7 +9,7 @@ layout: default
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
       <div class="entry">
-	          {{ post.excerpt | truncate: 100 }}
+	          {{ post.excerpt | truncatewords: 100 }}
       </div>
 
     </article>
