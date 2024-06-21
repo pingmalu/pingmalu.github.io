@@ -12,6 +12,24 @@ Termux是一个Android终端模拟器和Linux环境应用程序，可直接使�
 
 termux清华大学开源软件镜像站[https://mirrors.tuna.tsinghua.edu.cn/help/termux/](https://mirrors.tuna.tsinghua.edu.cn/help/termux/)
 
+# SSH启动连接
+
+启动：
+
+	sshd
+
+连接(默认监听端口8022)：
+
+	ssh ip -p 8022
+
+# 安装pandas
+
+``` shell
+pkg i tur-repo
+pkg update
+pkg i python-pandas
+```
+
 ### 内部存储和外部存储（sd卡）访问
 
 参考官方文档：[https://termux.com/storage.html](https://termux.com/storage.html)
