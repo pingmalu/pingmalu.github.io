@@ -30,6 +30,11 @@ pkg update
 pkg i python-pandas
 ```
 
+# 安装wakeonlan
+
+
+	pip install wakeonlan
+
 ### 内部存储和外部存储（sd卡）访问
 
 参考官方文档：[https://termux.com/storage.html](https://termux.com/storage.html)
