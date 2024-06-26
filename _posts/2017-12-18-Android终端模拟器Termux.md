@@ -12,6 +12,13 @@ Termux是一个Android终端模拟器和Linux环境应用程序，可直接使�
 
 termux清华大学开源软件镜像站[https://mirrors.tuna.tsinghua.edu.cn/help/termux/](https://mirrors.tuna.tsinghua.edu.cn/help/termux/)
 
+## pkg安装源切换
+
+在较新版的 Termux 中，官方提供了图形界面（TUI）来半自动替换镜像，推荐使用该种方式以规避其他风险。 在 Termux 中执行如下命令
+
+```
+termux-change-repo
+```
 # SSH启动连接
 
 启动：
