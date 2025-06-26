@@ -1,12 +1,21 @@
 #!/bin/bash
+# 定义基础别名块的全局版本号
+BASE_ALIAS_VERSION="v20250626"
 
 # 定义用户主目录下的 .bash_aliases 文件路径
 ALIAS_FILE="$HOME/.bash_aliases"
 
-# 使用 heredoc 定义要添加的别名块
-read -r -d '' ALIAS_BLOCK <<'EOF'
+# 使用 heredoc 定义要添加的别名块，头部带版本号
+read -r -d '' ALIAS_BLOCK <<EOF
 
-### base ###
+### base $BASE_ALIAS_VERSION ###
+tm() {
+  if [ "\$1" = "ls" ]; then
+    tmux ls
+  else
+    tmux attach -t "\$1" || tmux new -s "\$1"
+  fi
+}
 alias sc='screen -h 100000 -d -U -R'
 alias g='git'
 alias gr='git remote -v'
@@ -20,7 +29,7 @@ alias dk2='docker exec -it $(docker ps -q | head -n2|tail -n1) bash'
 alias dk3='docker exec -it $(docker ps -q | head -n3|tail -n1) bash'
 alias p='pwd'
 alias pi='ping'
-alias h="printf '\\e]0;%s\\e\\\\' `hostname` && hostname"
+alias h="printf '\\\\e]0;%s\\\\e\\\\\\\\' `hostname` && hostname"
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -47,15 +56,24 @@ if [ ! -f "$ALIAS_FILE" ]; then
     echo "文件 $ALIAS_FILE 未找到，正在创建..."
     echo "$ALIAS_BLOCK" > "$ALIAS_FILE"
     echo "别名已添加到新文件中。"
-# 如果文件存在，则检查基础别名是否已在其中
-elif ! grep -q "### base ###" "$ALIAS_FILE"; then
-    echo "文件 $ALIAS_FILE 已存在，但未找到基础别名。正在追加..."
-    # 在别名块之前追加一个空行，使文件更整洁
-    echo "" >> "$ALIAS_FILE"
-    echo "$ALIAS_BLOCK" >> "$ALIAS_FILE"
-    echo "别名已追加完毕。"
 else
-    echo "基础别名已存在于 $ALIAS_FILE 中。未执行任何操作。"
+    # 检查是否存在 base 块及其版本号
+    EXISTING_VERSION=$(grep -oE '### base .* ###' ".bash_aliases" | head -n1 | grep -oP '(?<=### base ).*(?= ###)')
+    if [ -z "$EXISTING_VERSION" ]; then
+        echo "未检测到基础别名块，正在追加..."
+        echo "" >> "$ALIAS_FILE"
+        echo "$ALIAS_BLOCK" >> "$ALIAS_FILE"
+        echo "别名已追加完毕。"
+    elif [ "$EXISTING_VERSION" != "$BASE_ALIAS_VERSION" ]; then
+        echo "检测到版本不一致，正在替换旧的基础别名块..."
+        # 用 sed 删除旧的 base 块（含头尾）
+        sed -i.bak "/### base .* ###/,/### base_end ###/d" "$ALIAS_FILE"
+        echo "" >> "$ALIAS_FILE"
+        echo "$ALIAS_BLOCK" >> "$ALIAS_FILE"
+        echo "基础别名块已更新为新版本。"
+    else
+        echo "基础别名块版本一致，无需更新。"
+    fi
 fi
 
 echo "脚本执行完毕。请运行 'source ~/.bash_aliases' 或新开一个终端来应用更改。"
