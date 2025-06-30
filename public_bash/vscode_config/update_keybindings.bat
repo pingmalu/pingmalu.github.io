@@ -13,7 +13,6 @@ set "SCRIPT_DIR=%~dp0"
 set "LOCAL_KEYBINDINGS_FILE=%SCRIPT_DIR%keybindings.json"
 set "TARGET_FOUND=0"
 
-:: 判断是否带有 cn 参数（不区分大小写）
 set "USE_CN=0"
 for %%A in (%*) do (
     echo %%A | findstr /I "cn" >nul && set "USE_CN=1"
@@ -21,7 +20,7 @@ for %%A in (%*) do (
 
 if %USE_CN%==1 (
     set "DOWNLOAD_URL=https://gh-proxy.com/%KEYBINDINGS_URL%"
-    echo [INFO] 检测到参数包含 cn，将使用国内代理下载地址。
+    echo [INFO] Detecting parameter contains cn, using domestic proxy download address.
 ) else (
     set "DOWNLOAD_URL=%KEYBINDINGS_URL%"
 )
@@ -47,7 +46,7 @@ if %TARGET_FOUND% equ 1 (
     :: Check if local keybindings.json exists
     if not exist "%LOCAL_KEYBINDINGS_FILE%" (
         echo [INFO] keybindings.json not found in script directory, downloading from network...
-        :: 根据参数选择下载地址
+        :: According to the parameter to select the download address
         curl -L -o "%LOCAL_KEYBINDINGS_FILE%" "%DOWNLOAD_URL%"
         
         :: Verify download success
