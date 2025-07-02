@@ -3,6 +3,209 @@ layout: post
 title: PostgreSQL
 ---
 
+# windows下使用PostgreSQL
+
+## 可移植版本下载与安装
+
+下载地址：[https://www.enterprisedb.com/downloads/postgres-postgresql-downloads](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
+
+
+### 安装脚本
+
+```bat
+@echo off
+cd %TEMP%
+setlocal enabledelayedexpansion
+
+:: Set target path and download URL
+set "TARGET_DIR=D:\02_SOFT\pg\PGgreen"
+set "DOWNLOAD_URL=https://get.enterprisedb.com/postgresql/postgresql-17.5-2-windows-x64-binaries.zip"
+set "ZIP_FILE=postgresql-17.5-2-windows-x64-binaries.zip"
+
+:: Check if running as Administrator
+net session >nul 2>&1
+if %errorLevel% neq 0 (
+    echo Please run this script as Administrator!
+    pause
+    exit /b
+)
+
+:: Create target directory if it doesn't exist
+if not exist "%TARGET_DIR%" (
+    echo Creating directory: %TARGET_DIR%
+    mkdir "%TARGET_DIR%"
+)
+
+:: Download ZIP file
+echo Downloading PostgreSQL...
+curl -L -o "%ZIP_FILE%" "%DOWNLOAD_URL%"
+if %errorLevel% neq 0 (
+    echo Download failed! Please check your network connection or verify the URL.
+    pause
+    exit /b
+)
+
+:: Check for available extraction tools
+where tar >nul 2>&1
+if %errorLevel% equ 0 (
+    echo Extracting with tar...
+    tar -xf "%ZIP_FILE%" -C "%TARGET_DIR%"
+) else (
+    where 7z >nul 2>&1
+    if %errorLevel% equ 0 (
+        echo Extracting with 7-Zip...
+        7z x "%ZIP_FILE%" -o"%TARGET_DIR%" -y
+    ) else (
+        echo Extracting with Windows built-in tool...
+        powershell -command "Expand-Archive -Path '%ZIP_FILE%' -DestinationPath '%TARGET_DIR%' -Force"
+    )
+)
+
+:: Move contents of pgsql folder to TARGET_DIR if pgsql exists
+if exist "%TARGET_DIR%\pgsql\" (
+    echo Moving files from pgsql folder to %TARGET_DIR%...
+    robocopy "%TARGET_DIR%\pgsql" "%TARGET_DIR%" /E /MOVE >nul
+
+    :: Remove empty pgsql folder if it still exists
+    if exist "%TARGET_DIR%\pgsql" (
+        rmdir "%TARGET_DIR%\pgsql"
+    )
+)
+
+:: Delete ZIP file
+:: del "%ZIP_FILE%"
+
+echo PostgreSQL has been successfully extracted to %TARGET_DIR%.
+pause
+```
+
+### 1. 传到到目录
+
+如：C:\pg_green
+
+### 2. 解压文件
+
+将下载的压缩包解压到您选择的目录，例如：
+
+```
+D:\02_SOFT\pg\PGgreen
+或
+/data/PGgreen
+```
+
+### 3. 初始化数据库
+
+打开命令行/终端，导航到 PostgreSQL 的 bin 目录，然后运行初始化命令：
+
+```bash
+# Windows
+initdb.exe -D ..\data -U postgres -W --encoding=UTF8
+
+# Linux/Mac
+./initdb -D ../data -U postgres -W --encoding=UTF8
+```
+
+这将创建数据目录并设置初始配置。
+
+## 4. 启动 PostgreSQL 服务
+
+```bash
+# Windows
+pg_ctl.exe -D ..\data -l ..\logfile start
+
+# Linux/Mac
+./pg_ctl -D ../data -l ../logfile start
+```
+
+## 5. 连接到数据库
+
+使用 psql 客户端连接：
+
+```bash
+# Windows
+psql.exe -U postgres -d postgres
+
+# Linux/Mac
+./psql -U postgres -d postgres
+```
+
+## 6. 基本管理命令
+
+- 停止服务：
+  ```bash
+  pg_ctl -D ../data stop
+  ```
+
+- 创建新数据库：
+  ```sql
+  CREATE DATABASE mydb;
+  ```
+
+- 创建新用户：
+  ```sql
+  CREATE USER myuser WITH PASSWORD 'mypassword';
+  ```
+
+## 高级配置
+
+如果需要远程访问或更改端口等配置，可以编辑数据目录中的 postgresql.conf 和 pg_hba.conf 文件。
+
+
+在目录下创建名为 启动PG.bat 对应脚本
+
+## 启动PG
+
+```bat
+:: @echo off
+cd /d %~dp0/bin
+.\pg_ctl.exe -D ../data -l ../logfile start
+```
+
+## 停止PG
+
+```bat
+:: @echo off
+cd /d %~dp0/bin
+.\pg_ctl.exe -D ../data stop
+```
+
+## 注册服务-管理员权限
+
+```bat
+:: @echo off
+cd /d %~dp0/bin
+.\pg_ctl.exe register -N "PGgreen" -D ../data -w
+```
+
+## 卸载服务-管理员权限
+
+```bat
+:: @echo off
+cd /d %~dp0/bin
+.\pg_ctl.exe unregister -N "PGgreen"
+```
+
+### 启动停止服务
+
+```bat
+net start PGgreen
+net stop PGgreen
+```
+
+### 在 postgresql.conf 中配置日志
+
+编辑数据目录中的 postgresql.conf 文件
+
+设置以下参数：
+
+logging_collector = on
+log_directory = 'pg_log'
+log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
+
+
+
+
+
 # 将Mysql数据库迁移至PostgreSQL
 
 ## 简单的方法：使用Navicat Premium复制功能
