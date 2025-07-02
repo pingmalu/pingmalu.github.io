@@ -108,6 +108,13 @@ echo Creating "unregister_service_admin.bat"...
     echo .\pg_ctl.exe unregister -N "PGgreen"
 ) > "%INSTALL_DIR%\unregister_service_admin.bat"
 
+echo Creating "init_pg.bat"...
+(
+    echo @echo off
+    echo cd /d %%~dp0\bin
+    echo .\initdb.exe -D ..\data -U postgres -W --encoding=UTF8
+) > "%INSTALL_DIR%\init_pg.bat"
+
 echo PostgreSQL has been successfully set up in: %INSTALL_DIR%
 pause
 
@@ -232,10 +239,13 @@ net stop PGgreen
 
 设置以下参数：
 
+```conf
+listen_addresses = '0.0.0.0'
+port = 5433
 logging_collector = on
 log_directory = 'pg_log'
 log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
-
+```
 
 
 
