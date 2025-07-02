@@ -14,15 +14,15 @@ title: PostgreSQL
 
 ```bat
 @echo off
-cd %TEMP%
+cd /d %TEMP%
 setlocal enabledelayedexpansion
 
-:: Set target path and download URL
-set "TARGET_DIR=D:\02_SOFT\pg\PGgreen"
+:: Configuration
+set "INSTALL_DIR=D:\02_SOFT\pg\PGgreen"
 set "DOWNLOAD_URL=https://get.enterprisedb.com/postgresql/postgresql-17.5-2-windows-x64-binaries.zip"
 set "ZIP_FILE=postgresql-17.5-2-windows-x64-binaries.zip"
 
-:: Check if running as Administrator
+:: Check for admin privileges
 net session >nul 2>&1
 if %errorLevel% neq 0 (
     echo Please run this script as Administrator!
@@ -30,53 +30,87 @@ if %errorLevel% neq 0 (
     exit /b
 )
 
-:: Create target directory if it doesn't exist
-if not exist "%TARGET_DIR%" (
-    echo Creating directory: %TARGET_DIR%
-    mkdir "%TARGET_DIR%"
+:: Create install directory if it doesn't exist
+if not exist "%INSTALL_DIR%" (
+    echo Creating directory: %INSTALL_DIR%
+    mkdir "%INSTALL_DIR%"
 )
 
-:: Download ZIP file
-echo Downloading PostgreSQL...
-curl -L -o "%ZIP_FILE%" "%DOWNLOAD_URL%"
-if %errorLevel% neq 0 (
-    echo Download failed! Please check your network connection or verify the URL.
-    pause
-    exit /b
+:: Skip download if ZIP file already exists
+if exist "%TEMP%\%ZIP_FILE%" (
+    echo File "%ZIP_FILE%" already exists in TEMP. Skipping download.
+) else (
+    echo Downloading PostgreSQL binaries...
+    curl -L -o "%ZIP_FILE%" "%DOWNLOAD_URL%"
+    if %errorLevel% neq 0 (
+        echo Download failed! Please check your internet connection or the URL.
+        pause
+        exit /b
+    )
 )
 
-:: Check for available extraction tools
+:: Extract ZIP to target directory
 where tar >nul 2>&1
 if %errorLevel% equ 0 (
-    echo Extracting with tar...
-    tar -xf "%ZIP_FILE%" -C "%TARGET_DIR%"
+    echo Extracting using tar...
+    tar -xf "%ZIP_FILE%" -C "%INSTALL_DIR%"
 ) else (
     where 7z >nul 2>&1
     if %errorLevel% equ 0 (
-        echo Extracting with 7-Zip...
-        7z x "%ZIP_FILE%" -o"%TARGET_DIR%" -y
+        echo Extracting using 7-Zip...
+        7z x "%ZIP_FILE%" -o"%INSTALL_DIR%" -y
     ) else (
-        echo Extracting with Windows built-in tool...
-        powershell -command "Expand-Archive -Path '%ZIP_FILE%' -DestinationPath '%TARGET_DIR%' -Force"
+        echo Extracting using PowerShell...
+        powershell -command "Expand-Archive -Path '%ZIP_FILE%' -DestinationPath '%INSTALL_DIR%' -Force"
     )
 )
 
-:: Move contents of pgsql folder to TARGET_DIR if pgsql exists
-if exist "%TARGET_DIR%\pgsql\" (
-    echo Moving files from pgsql folder to %TARGET_DIR%...
-    robocopy "%TARGET_DIR%\pgsql" "%TARGET_DIR%" /E /MOVE >nul
+:: Move contents of pgsql subfolder to main install directory
+if exist "%INSTALL_DIR%\pgsql\" (
+    echo Moving files from \pgsql to root of install directory...
+    robocopy "%INSTALL_DIR%\pgsql" "%INSTALL_DIR%" /E /MOVE >nul
 
-    :: Remove empty pgsql folder if it still exists
-    if exist "%TARGET_DIR%\pgsql" (
-        rmdir "%TARGET_DIR%\pgsql"
+    :: Remove empty pgsql directory
+    if exist "%INSTALL_DIR%\pgsql" (
+        rmdir "%INSTALL_DIR%\pgsql"
     )
 )
 
-:: Delete ZIP file
+:: Clean up downloaded ZIP
 :: del "%ZIP_FILE%"
 
-echo PostgreSQL has been successfully extracted to %TARGET_DIR%.
+:: Create helper scripts
+echo Creating "start_pg.bat"...
+(
+    echo @echo off
+    echo cd /d %%~dp0\bin
+    echo .\pg_ctl.exe -D ../data -l ../logfile start
+) > "%INSTALL_DIR%\start_pg.bat"
+
+echo Creating "stop_pg.bat"...
+(
+    echo @echo off
+    echo cd /d %%~dp0\bin
+    echo .\pg_ctl.exe -D ../data stop
+) > "%INSTALL_DIR%\stop_pg.bat"
+
+echo Creating "register_service_admin.bat"...
+(
+    echo @echo off
+    echo cd /d %%~dp0\bin
+    echo .\pg_ctl.exe register -N "PGgreen" -D ../data -w
+) > "%INSTALL_DIR%\register_service_admin.bat"
+
+echo Creating "unregister_service_admin.bat"...
+(
+    echo @echo off
+    echo cd /d %%~dp0\bin
+    echo .\pg_ctl.exe unregister -N "PGgreen"
+) > "%INSTALL_DIR%\unregister_service_admin.bat"
+
+echo PostgreSQL has been successfully set up in: %INSTALL_DIR%
 pause
+
 ```
 
 ### 1. 传到到目录
@@ -151,7 +185,7 @@ psql.exe -U postgres -d postgres
 如果需要远程访问或更改端口等配置，可以编辑数据目录中的 postgresql.conf 和 pg_hba.conf 文件。
 
 
-在目录下创建名为 启动PG.bat 对应脚本
+在TARGET_DIR目录下创建名为 启动PG.bat 停止PG.bat 注册服务-管理员权限.bat 卸载服务-管理员权限.bat 对应脚本
 
 ## 启动PG
 
