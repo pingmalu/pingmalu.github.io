@@ -10,7 +10,7 @@ title: PostgreSQL
 下载地址：[https://www.enterprisedb.com/downloads/postgres-postgresql-downloads](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
 
 
-### 安装脚本
+### 一键安装脚本
 
 ```bat
 @echo off
@@ -172,20 +172,41 @@ psql.exe -U postgres -d postgres
 
 ## 6. 基本管理命令
 
-- 停止服务：
-  ```bash
-  pg_ctl -D ../data stop
-  ```
 
-- 创建新数据库：
-  ```sql
-  CREATE DATABASE mydb;
-  ```
+停止服务：
 
-- 创建新用户：
-  ```sql
-  CREATE USER myuser WITH PASSWORD 'mypassword';
-  ```
+```bash
+pg_ctl -D ../data stop
+```
+
+
+```sql
+-- 创建新数据库
+CREATE DATABASE mydb;
+
+-- 创建新用户
+CREATE USER myuser WITH PASSWORD 'mypassword';
+
+-- 这将允许 myuser 在 mydb 数据库中创建表
+GRANT CREATE ON DATABASE mydb TO myuser;
+
+-- 1. 创建用户
+CREATE USER myuser WITH PASSWORD 'mypassword';
+
+-- 2. 授权连接数据库
+GRANT CONNECT ON DATABASE mydb TO myuser;
+
+-- 3. 授权使用 schema
+GRANT USAGE ON SCHEMA public TO myuser;
+
+-- 4. 授权数据操作
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO myuser;
+
+-- 5. 设置 future tables 权限
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO myuser;
+
+```
 
 ## 高级配置
 
