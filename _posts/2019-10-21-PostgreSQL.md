@@ -191,20 +191,25 @@ CREATE USER myuser WITH PASSWORD 'mypassword';
 GRANT CREATE ON DATABASE mydb TO myuser;
 
 -- 1. 创建用户
-CREATE USER myuser WITH PASSWORD 'mypassword';
+CREATE USER rwuser WITH PASSWORD 'mypassword';
 
 -- 2. 授权连接数据库
-GRANT CONNECT ON DATABASE mydb TO myuser;
+GRANT CONNECT ON DATABASE mydb TO rwuser;
 
 -- 3. 授权使用 schema
-GRANT USAGE ON SCHEMA public TO myuser;
+GRANT USAGE ON SCHEMA public TO rwuser;
 
--- 4. 授权数据操作
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO myuser;
+-- 4. 授权数据操作 (去指定数据库下)
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO rwuser;
+--授权 public schema 下所有序列权限 (插入时自增序列需要)
+GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO rwuser;
 
--- 5. 设置 future tables 权限
+-- 5. 设置 future tables 权限 (去指定数据库下)
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
-GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO myuser;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO rwuser;
+--保证以后新建的序列也自动授权：
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT USAGE, SELECT, UPDATE ON SEQUENCES TO rwuser;
 
 ```
 
