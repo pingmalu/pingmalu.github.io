@@ -1,7 +1,7 @@
 #!/bin/bash
 export LC_ALL=C.UTF-8
 # 定义基础别名块的全局版本号
-BASE_ALIAS_VERSION="v20250812"
+BASE_ALIAS_VERSION="v20250813"
 
 # 定义用户主目录下的 .bash_aliases 文件路径
 ALIAS_FILE="$HOME/.bash_aliases"
