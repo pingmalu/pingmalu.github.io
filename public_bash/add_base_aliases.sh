@@ -1,4 +1,6 @@
 #!/bin/bash
+# bash <(curl -fsSL https://raw.githubusercontent.com/pingmalu/pingmalu.github.io/master/public_bash/add_base_aliases.sh)
+# bash <(curl -fsSL https://gh-proxy.com/https://raw.githubusercontent.com/pingmalu/pingmalu.github.io/master/public_bash/add_base_aliases.sh)
 export LC_ALL=C.UTF-8
 # 定义基础别名块的全局版本号
 BASE_ALIAS_VERSION="v20250814"
