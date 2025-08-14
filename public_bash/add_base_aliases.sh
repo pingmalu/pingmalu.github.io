@@ -1,7 +1,7 @@
 #!/bin/bash
 export LC_ALL=C.UTF-8
 # 定义基础别名块的全局版本号
-BASE_ALIAS_VERSION="v20250813"
+BASE_ALIAS_VERSION="v20250814"
 
 # 定义用户主目录下的 .bash_aliases 文件路径
 ALIAS_FILE="$HOME/.bash_aliases"
@@ -14,10 +14,10 @@ EOF
 
 read -r -d '' ALIAS_BODY <<'EOF'
 tm() {
-  if [ "\$1" = "ls" ]; then
+  if [ "$1" = "ls" ]; then
     tmux ls
   else
-    tmux attach -t "\$1" || tmux new -s "\$1"
+    tmux attach -t "$1" || tmux new -s "$1"
   fi
 }
 alias sc='screen -h 100000 -d -U -R'
