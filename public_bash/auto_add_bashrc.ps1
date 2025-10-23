@@ -4,9 +4,45 @@ $gitBashPath = Get-Command bash.exe -ErrorAction SilentlyContinue | Where-Object
 } | Select-Object -First 1 -ExpandProperty Source
 
 if (-not $gitBashPath) {
-    Write-Host "错误：未找到 Git Bash，请确认 Git 已安装并已添加到 PATH"
-    pause
-    exit 1
+    Write-Host "警告：未在 PATH 中找到 Git Bash"
+    
+    # 检查默认 Git 安装路径
+    $defaultGitBinPath = "C:\Program Files\Git\bin"
+    $defaultGitBashExe = Join-Path $defaultGitBinPath "bash.exe"
+    
+    if (Test-Path $defaultGitBashExe) {
+        Write-Host "在默认路径找到 Git Bash: $defaultGitBashExe"
+        Write-Host "正在将 $defaultGitBinPath 添加到用户环境变量 PATH..."
+        
+        try {
+            # 获取当前用户的 PATH 环境变量
+            $userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+            
+            # 检查路径是否已存在
+            if ($userPath -notlike "*$defaultGitBinPath*") {
+                # 添加新路径（使用分号分隔）
+                $newPath = if ($userPath) { "$userPath;$defaultGitBinPath" } else { $defaultGitBinPath }
+                [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
+                
+                # 更新当前会话的 PATH
+                $env:Path = "$env:Path;$defaultGitBinPath"
+                
+                Write-Host "已成功将 Git Bash 路径添加到用户环境变量 PATH"
+                $gitBashPath = $defaultGitBashExe
+            } else {
+                Write-Host "Git Bash 路径已存在于用户 PATH 中"
+                $gitBashPath = $defaultGitBashExe
+            }
+        } catch {
+            Write-Host "错误：无法修改环境变量 PATH - $_"
+            pause
+            exit 1
+        }
+    } else {
+        Write-Host "错误：未找到 Git Bash，请确认 Git 已安装在 $defaultGitBinPath"
+        pause
+        exit 1
+    }
 }
 
 # 检测并创建 .bash_profile
