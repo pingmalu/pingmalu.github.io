@@ -3,7 +3,7 @@
 # bash <(curl -fsSL https://gh-proxy.com/https://raw.githubusercontent.com/pingmalu/pingmalu.github.io/master/public_bash/add_base_aliases.sh)
 export LC_ALL=C.UTF-8
 # 定义基础别名块的全局版本号
-BASE_ALIAS_VERSION="v20250814"
+BASE_ALIAS_VERSION="v20251023"
 
 # 定义用户主目录下的 .bash_aliases 文件路径
 ALIAS_FILE="$HOME/.bash_aliases"
@@ -15,6 +15,13 @@ read -r -d '' ALIAS_HEADER <<EOF
 EOF
 
 read -r -d '' ALIAS_BODY <<'EOF'
+if [ "$(uname)" = "Linux" ]; then
+    alias n='netstat -lntp'
+    alias ig='ifconfig'
+else
+    alias n='netstat -na -p TCP|grep 0.0.0.0|grep -v " 1"'
+    alias ig='ipconfig'
+fi
 tm() {
   if [ "$1" = "ls" ]; then
     tmux ls
