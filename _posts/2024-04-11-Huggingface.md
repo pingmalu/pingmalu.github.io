@@ -11,6 +11,27 @@ title: Huggingface
     apt install git-lfs
     apt install aria2
 
+### 工程推荐配置
+
+```bash
+# ~/.bashrc
+export HF_ENDPOINT=https://hf-mirror.com
+export HF_HUB_ENABLE_HF_TRANSFER=1
+export HF_HUB_DOWNLOAD_TIMEOUT=600
+export TRANSFORMERS_CACHE=/mnt/hf_cache/hub    # Transformers 库的模型和分词器缓存
+export HF_HOME=/mnt/hf_cache                   # 所有 Hugging Face 库（Transformers、Datasets、Evaluate等）的通用根缓存目录
+```
+
+### 强制离线环境配置
+
+```bash
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+export HF_DATASETS_OFFLINE=1
+export TRANSFORMERS_CACHE=/mnt/hf_cache/hub    # Transformers 库的模型和分词器缓存
+```
+
+
 ### 在线模型依赖切换到本地模型
 
 下载模型
