@@ -10,3 +10,4 @@ package.json
 .idea
 .obsidian
 .vscode
+__pycache__

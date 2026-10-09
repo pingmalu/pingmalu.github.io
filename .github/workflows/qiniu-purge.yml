@@ -1,0 +1,50 @@
+name: 刷新七牛镜像与 CDN
+
+# 替代原来的 GitHub Webhook（https://m1.malu.me/Qiniu/githubhook）。
+# 推送到 master 后，按本次改动删除七牛 Bucket pingmalu-github-io 里的对应对象，再刷新 http://git.malu.me。
+# 密钥放在仓库 Settings → Secrets and variables → Actions：
+#   QINIU_ACCESS_KEY
+#   QINIU_SECRET_KEY
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: home 清理首页和分页；titles 按文章标题清理
+        required: true
+        default: home
+        type: choice
+        options:
+          - home
+          - titles
+      titles:
+        description: titles 模式填写文章标题，多个用英文逗号分隔，例如 JWT攻击,Python
+        required: false
+        type: string
+
+concurrency:
+  group: qiniu-purge
+  cancel-in-progress: false
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 删除对应对象并刷新 CDN
+        env:
+          QINIU_ACCESS_KEY: ${{ secrets.QINIU_ACCESS_KEY }}
+          QINIU_SECRET_KEY: ${{ secrets.QINIU_SECRET_KEY }}
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+          INPUT_MODE: ${{ inputs.mode }}
+          INPUT_TITLES: ${{ inputs.titles }}
+        run: python3 .github/scripts/qiniu_purge.py
