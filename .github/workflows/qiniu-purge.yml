@@ -1,13 +1,18 @@
 name: 刷新七牛镜像与 CDN
 
+# 在 GitHub Pages 的 pages-build-deployment 成功后再清理七牛镜像并刷新 CDN。
 # 替代原来的 GitHub Webhook（https://m1.malu.me/Qiniu/githubhook）。
-# 推送到 master 后，按本次改动删除七牛 Bucket pingmalu-github-io 里的对应对象，再刷新 http://git.malu.me。
+# 按本次部署对应提交删除七牛 Bucket pingmalu-github-io 里的对象，再刷新 http://git.malu.me。
 # 密钥放在仓库 Settings → Secrets and variables → Actions：
 #   QINIU_ACCESS_KEY
 #   QINIU_SECRET_KEY
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - pages-build-deployment
+    types:
+      - completed
     branches:
       - master
   workflow_dispatch:
@@ -32,19 +37,29 @@ concurrency:
 jobs:
   purge:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: 检出仓库
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.ref || github.event.workflow_run.head_sha }}
           fetch-depth: 0
+
+      - name: 计算 git 对比范围
+        if: github.event_name == 'workflow_run'
+        run: |
+          AFTER_SHA="${{ github.event.workflow_run.head_sha }}"
+          BEFORE_SHA="$(git rev-parse "${AFTER_SHA}^" 2>/dev/null || true)"
+          echo "AFTER_SHA=${AFTER_SHA}" >> "$GITHUB_ENV"
+          echo "BEFORE_SHA=${BEFORE_SHA}" >> "$GITHUB_ENV"
 
       - name: 删除对应对象并刷新 CDN
         env:
           QINIU_ACCESS_KEY: ${{ secrets.QINIU_ACCESS_KEY }}
           QINIU_SECRET_KEY: ${{ secrets.QINIU_SECRET_KEY }}
           EVENT_NAME: ${{ github.event_name }}
-          BEFORE_SHA: ${{ github.event.before }}
-          AFTER_SHA: ${{ github.sha }}
+          BEFORE_SHA: ${{ env.BEFORE_SHA }}
+          AFTER_SHA: ${{ env.AFTER_SHA || github.sha }}
           INPUT_MODE: ${{ inputs.mode }}
           INPUT_TITLES: ${{ inputs.titles }}
         run: python3 .github/scripts/qiniu_purge.py
